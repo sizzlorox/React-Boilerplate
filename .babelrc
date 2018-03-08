@@ -1,0 +1,14 @@
+{
+  "presets": [
+    [
+      "env"
+    ],
+    "es2015",
+    "stage-1",
+    "react",
+    "react-hmre"
+  ],
+  "plugins": [
+    "transform-runtime"
+  ]
+}
