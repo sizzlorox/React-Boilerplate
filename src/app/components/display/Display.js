@@ -1,7 +1,7 @@
 const React = require('react');
 const { Route, Switch } = require('react-router-dom');
-const Home = require('./Home');
-const About = require('./About');
+const Home = require('../../views/home/Home');
+const About = require('../../views/about/About');
 
 class Display extends React.Component {
   constructor(props) {

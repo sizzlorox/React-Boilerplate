@@ -1,10 +1,10 @@
 const React = require('react');
 
-const styles = require('./styles/app.css');
+const styles = require('./app.css');
 
-const Navigation = require('./Navigation');
-const Display = require('./Display');
-const Footer = require('./Footer');
+const Navigation = require('./components/navigation/Navigation');
+const Display = require('./components/display/Display');
+const Footer = require('./components/footer/Footer');
 
 class App extends React.Component {
   constructor(props) {

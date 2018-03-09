@@ -1,6 +1,6 @@
 const ReactDOM = require('react-dom');
 const { BrowserRouter } = require('react-router-dom');
-const App = require('./components/App');
+const App = require('./App');
 
 ReactDOM.render((
   <BrowserRouter>

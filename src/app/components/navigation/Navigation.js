@@ -1,7 +1,7 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 const { Link } = require('react-router-dom');
-const styles = require('./styles/navigation.css');
+const styles = require('./navigation.css');
 
 class Navigation extends React.Component {
   constructor(props) {

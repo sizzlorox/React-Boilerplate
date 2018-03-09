@@ -1,8 +1,8 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
-const styles = require('./styles/app.css');
+const styles = require('../../app.css');
 
-class footer extends React.Component {
+class Footer extends React.Component {
   constructor(props) {
     super(props);
     // Locally defined state
@@ -17,4 +17,4 @@ class footer extends React.Component {
     )
   }
 }
-module.exports = footer;
+module.exports = Footer;
