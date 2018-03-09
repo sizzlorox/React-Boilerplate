@@ -5,7 +5,15 @@
   "main": "server.js",
   "scripts": {
     "dev": "node server cross-env NODE_ENV=development",
-    "build": "webpack"
+    "build": "webpack",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "jest": {
+    "transform": {
+      ".*": "<rootDir>/node_modules/jest-css-modules"
+    },
+    "setupTestFrameworkScriptFile": "<rootDir>src/setupTests.js"
   },
   "author": "sunnyh",
   "license": "MIT",
@@ -16,10 +24,16 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-stage-1": "^6.24.1",
+    "chai": "^4.1.2",
     "cross-env": "^5.1.3",
     "css-loader": "^0.28.10",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "html-webpack-plugin": "^3.0.6",
+    "jest": "^22.4.2",
+    "jest-css-modules": "^1.1.0",
     "postcss-loader": "^2.1.1",
+    "sinon": "^4.4.2",
     "style-loader": "^0.20.2",
     "webpack": "^4.1.0",
     "webpack-cli": "^2.0.10",

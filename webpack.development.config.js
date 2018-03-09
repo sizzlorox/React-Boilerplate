@@ -5,9 +5,11 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const options = {
-  mode: 'production',
+  devtool: 'eval-source-map',
+  mode: 'development',
   target: 'web',
   entry: [
+    'webpack-hot-middleware/client?reload=true',
     path.join(__dirname, 'src/app/index.js')
   ],
   output: {
@@ -22,9 +24,10 @@ const options = {
       filename: 'index.html'
     }),
     new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
+      'process.env.NODE_ENV': JSON.stringify('development')
     }),
     new webpack.ProvidePlugin({
       "React": "react",

@@ -4,9 +4,10 @@ const webpack = require('webpack');
 const { Routes } = require('react-router');
 const webpackMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
-const config = require('./webpack.config.js');
 
 const isDeveloping = process.env.NODE_ENV !== 'production';
+const config = isDeveloping ? require('./webpack.development.config.js') : require('./webpack.config.js');
+
 const port = isDeveloping ? 3000 : process.env.PORT;
 const app = express();
 
