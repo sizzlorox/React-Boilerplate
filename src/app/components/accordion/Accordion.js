@@ -19,7 +19,7 @@ class Accordion extends React.Component {
     handleClick(event) {
         this.state.active
             ? this.setState({
-                accordionClass: `${styles.accordion} ${this.state.active ? styles.active : ''}`,
+                accordionClass: `${styles.accordion} ${styles.active}`,
                 class: styles.panel,
                 active: !this.state.active
             })
