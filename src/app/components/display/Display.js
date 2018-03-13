@@ -4,6 +4,7 @@ const { Route, Switch } = require('react-router-dom');
 // Views
 const Home = require('../../views/home/Home');
 const About = require('../../views/about/About');
+const Faq = require('../../views/faq/Faq');
 
 // Components
 const Loading = require('../loading/Loading');
@@ -33,6 +34,7 @@ class Display extends React.Component {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/about' component={About} />
+          <Route exact path='/faq' component={() => <Faq styles={this.props.styles}/>} />
           <Route component={Home} />
         </Switch>
       )

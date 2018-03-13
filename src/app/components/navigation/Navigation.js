@@ -16,8 +16,8 @@ class Navigation extends React.Component {
     return (
       <ul className={styles.navigation}>
         <li><Link to='/'>Home</Link></li>
-        <li><Link to='/about'>About</Link></li>
-        <li><Link to='/'>Products</Link></li>
+        <li><Link styles={this.props.styles} to='/about'>About</Link></li>
+        <li><Link styles={this.props.styles} to='/faq'>FAQ</Link></li>
         <li><Link to='/'>Contact</Link></li>
       </ul>
     )

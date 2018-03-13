@@ -18,9 +18,9 @@ class App extends React.Component {
   render() {
     return (
       <div className={styles.wrapper}>
-        <Navigation />
-        <Display />
-        <Footer />
+        <Navigation styles={styles}/>
+        <Display styles={styles} />
+        <Footer styles={styles}/>
       </div>
     )
   }
