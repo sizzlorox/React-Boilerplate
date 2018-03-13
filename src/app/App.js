@@ -18,10 +18,12 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className={styles.wrapper}>
+      <div>
         <Navigation styles={styles} />
-        <Display styles={styles} />
-        <Footer styles={styles} />
+        <div className={styles.wrapper}>
+          <Display styles={styles} />
+          <Footer styles={styles} />
+        </div>
       </div>
     )
   }

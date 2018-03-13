@@ -1,9 +1,10 @@
 /* Large */
 .navigation {
+  top: 0;
   list-style: none;
   display: flex;
   flex-flow: row wrap;
-  margin: 0;
+  margin: -8px -8px -8px -8px; /* removing padding */
   justify-content: flex-end;
   background: darkgray;
 }
@@ -11,6 +12,10 @@
 .navigation a {
   text-decoration: none;
   display: block;
+}
+
+.active {
+  background-color: #4CAF50;
 }
 
 .navigation li {
@@ -23,13 +28,5 @@
   .navigation {
     /* When on medium sized screens, we center it by evenly distributing empty space around items */
     justify-content: space-around;
-  }
-}
-
-/* Small screens */
-@media all and (max-width: 500px) {
-  .navigation {
-    /* On small screens, we are no longer using row direction but column */
-    flex-direction: column;
   }
 }

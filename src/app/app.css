@@ -42,7 +42,3 @@
   .aside-right { order: 3; }
   .footer  { order: 4; }
 }
-
-body {
-  padding: 2em; 
-}
