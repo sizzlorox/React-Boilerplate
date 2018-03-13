@@ -3,6 +3,7 @@ const ReactDOM = require('react-dom');
 const styles = require('../../app.css');
 
 class Footer extends React.Component {
+  // Should initialize state in constructor instead of getInitialState when using ES6 Classes
   constructor(props) {
     super(props);
     // Locally defined state

@@ -6,6 +6,7 @@ const sideBarLeft = `${styles.aside} ${styles.asideLeft}`;
 const sideBarRight = `${styles.aside} ${styles.asideRight}`;
 
 class Home extends React.Component {
+  // Should initialize state in constructor instead of getInitialState when using ES6 Classes
   constructor(props) {
     super(props);
     // Locally defined state

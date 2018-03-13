@@ -7,6 +7,7 @@ const Display = require('./components/display/Display');
 const Footer = require('./components/footer/Footer');
 
 class App extends React.Component {
+  // Should initialize state in constructor instead of getInitialState when using ES6 Classes
   constructor(props) {
     super(props);
     // Locally defined state
@@ -18,9 +19,9 @@ class App extends React.Component {
   render() {
     return (
       <div className={styles.wrapper}>
-        <Navigation styles={styles}/>
+        <Navigation styles={styles} />
         <Display styles={styles} />
-        <Footer styles={styles}/>
+        <Footer styles={styles} />
       </div>
     )
   }

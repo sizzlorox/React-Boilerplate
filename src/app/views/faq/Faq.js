@@ -6,6 +6,7 @@ const styles = require('../../components/accordion/accordion.css');
 const Accordion = require('../../components/accordion/Accordion');
 
 class Faq extends React.Component {
+  // Should initialize state in constructor instead of getInitialState when using ES6 Classes
   constructor(props) {
     super(props);
     this.sideBarLeft = `${this.props.styles.aside} ${this.props.styles.asideLeft}`;

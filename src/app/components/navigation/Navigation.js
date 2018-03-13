@@ -4,6 +4,7 @@ const { Link } = require('react-router-dom');
 const styles = require('./navigation.css');
 
 class Navigation extends React.Component {
+  // Should initialize state in constructor instead of getInitialState when using ES6 Classes
   constructor(props) {
     super(props);
     // Locally defined state

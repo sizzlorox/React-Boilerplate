@@ -10,6 +10,7 @@ const Faq = require('../../views/faq/Faq');
 const Loading = require('../loading/Loading');
 
 class Display extends React.Component {
+  // Should initialize state in constructor instead of getInitialState when using ES6 Classes
   constructor(props) {
     super(props);
     // Locally defined state
@@ -34,7 +35,7 @@ class Display extends React.Component {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/about' component={About} />
-          <Route exact path='/faq' component={() => <Faq styles={this.props.styles}/>} />
+          <Route exact path='/faq' component={() => <Faq styles={this.props.styles} />} />
           <Route component={Home} />
         </Switch>
       )
