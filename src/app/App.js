@@ -1,10 +1,12 @@
 const React = require('react');
+const { Route, Switch } = require('react-router-dom');
+const Loading = require('./atoms/loading/Loading');
 
-const styles = require('./app.css');
+require('./app.scss');
 
-const Navigation = require('./components/navigation/Navigation');
-const Display = require('./components/display/Display');
-const Footer = require('./components/footer/Footer');
+// Pages
+const HomePage = require('./pages/home/Home');
+const FaqPage = require('./pages/faq/Faq');
 
 class App extends React.Component {
   // Should initialize state in constructor instead of getInitialState when using ES6 Classes
@@ -12,20 +14,29 @@ class App extends React.Component {
     super(props);
     // Locally defined state
     this.state = {
-      foo: 'bar'
+      foo: 'bar',
+      isLoading: true
     };
   }
 
+  componentWillMount() {
+    this.setState({ isLoading: true });
+  }
+
+  componentDidMount() {
+    this.setState({ isLoading: false });
+  }
+
   render() {
-    return (
-      <div>
-        <Navigation styles={styles} />
-        <div className={styles.wrapper}>
-          <Display styles={styles} />
-          <Footer styles={styles} />
-        </div>
-      </div>
-    )
+    return this.state.isLoading ?
+      (<Loading />)
+      : (
+        <Switch>
+          <Route exact path='/' component={HomePage} />
+          <Route exact path='/faq' component={FaqPage} />
+          <Route component={HomePage} />
+        </Switch>
+      )
   }
 }
 module.exports = App;

@@ -1,6 +1,8 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
-const styles = require('../../app.css');
+
+// Molecules
+const FooterMolecules = require('../../molecules/footer/Footer');
 
 class Footer extends React.Component {
   // Should initialize state in constructor instead of getInitialState when using ES6 Classes
@@ -14,7 +16,9 @@ class Footer extends React.Component {
 
   render() {
     return (
-      <footer className={styles.footer}>Copyright and footer links here.</footer>
+      <footer>
+        <FooterMolecules />
+      </footer>
     )
   }
 }

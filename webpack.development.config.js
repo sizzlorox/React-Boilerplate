@@ -48,7 +48,7 @@ const options = {
         ],
       },
       {
-        test: /\.css$/,
+        test: /\.scss$/,
         use: [
           {
             loader: 'style-loader',
@@ -63,8 +63,15 @@ const options = {
               localIdentName: '[path][name]__[local]--[hash:base64:5]',
               camelCase: 'dashesOnly'
             }
-          }
-        ]
+          },
+          {
+            loader: "sass-loader",
+            options: {
+              includePaths: [
+                'node_modules/foundation-sites/scss'
+              ]
+            }
+          }]
       }
     ],
   },

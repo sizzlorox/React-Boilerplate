@@ -2,9 +2,9 @@ const React = require('react');
 const { Route, Switch } = require('react-router-dom');
 
 // Views
-const Home = require('../../views/home/Home');
-const About = require('../../views/about/About');
-const Faq = require('../../views/faq/Faq');
+const Home = require('../../templates/home/Home');
+const About = require('../../templates/about/About');
+const Faq = require('../../templates/faq/Faq');
 
 // Components
 const Loading = require('../loading/Loading');
