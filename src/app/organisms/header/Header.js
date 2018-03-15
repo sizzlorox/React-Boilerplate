@@ -14,6 +14,7 @@ class Header extends React.Component {
     this.state = {
       foo: 'bar'
     };
+    console.log(styles.logo);
   }
 
   render() {
@@ -21,6 +22,9 @@ class Header extends React.Component {
       <div className={styles.topBar}>
         <div className={styles.topBarLeft}>
           <ul className={styles.menu}>
+            <a className={styles.logo} href='/'>
+              <img src="https://placehold.it/64x32"></img>
+            </a>
             <li className={styles.menuText}>
               BoilerPlate
             </li>
