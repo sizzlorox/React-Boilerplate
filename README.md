@@ -19,5 +19,3 @@ npm run dev
 ```
 npm run test
 ```
-
-![alt text](https://cdn.discordapp.com/attachments/385676928553582592/421282969332875264/bp.jpg)
