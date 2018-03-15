@@ -1,9 +1,9 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
-const styles = require('../../app.scss');
+const styles = require('../../../app.scss');
 
 // Atoms
-const NavTo = require('../../atoms/navigation/NavTo');
+const NavTo = require('../../../atoms/header/navigation/NavTo');
 
 class Navigation extends React.Component {
   // Should initialize state in constructor instead of getInitialState when using ES6 Classes

@@ -3,11 +3,7 @@ const ReactDOM = require('react-dom');
 const { Link } = require('react-router-dom');
 const styles = require('../../app.scss');
 
-// Atoms
-const Input = require('../../atoms/search/Input');
-const Button = require('../../atoms/search/Button');
-
-class Bar extends React.Component {
+class Title extends React.Component {
   // Should initialize state in constructor instead of getInitialState when using ES6 Classes
   constructor(props) {
     super(props);
@@ -18,11 +14,10 @@ class Bar extends React.Component {
 
   render() {
     return (
-      <ul className={styles.menu}>
-        <Input />
-        <Button />
-      </ul>
+      <li className={styles.menuText}>
+        {this.props.children}
+      </li>
     );
   }
 }
-module.exports = Bar;
+module.exports = Title;
