@@ -10,7 +10,7 @@ class Footer extends React.Component {
     super(props);
     // Locally defined state
     this.state = {
-      foo: 'bar'
+      isLoading: true
     };
   }
 

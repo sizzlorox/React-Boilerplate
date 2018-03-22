@@ -16,7 +16,6 @@ class Header extends React.Component {
     this.state = {
       foo: 'bar'
     };
-    console.log(styles.logo);
   }
 
   render() {

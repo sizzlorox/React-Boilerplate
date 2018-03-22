@@ -1,11 +1,11 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 const ReactLoading = require('react-loading');
-const styles = require('../../app.css');
+const styles = require('../../app.scss');
 
 // Components
-const Loading = require('../../components/loading/Loading');
-const Navigation = require('../../molecules/navigation/Navigation');
+const Loading = require('../../atoms/loading/Loading');
+const Navigation = require('../../molecules/header/navigation/Navigation');
 
 const sideBarLeft = `${styles.aside} ${styles.asideLeft}`;
 const sideBarRight = `${styles.aside} ${styles.asideRight}`;

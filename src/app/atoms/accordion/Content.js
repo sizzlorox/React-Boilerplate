@@ -11,6 +11,14 @@ class Content extends React.Component {
     };
   }
 
+  componentWillMount() {
+    this.setState({ isLoading: true });
+  }
+
+  componentDidMount() {
+    this.setState({ isLoading: false });
+  }
+
   render() {
     return (
       <div className={this.props.className} style={{ display: this.props.active ? 'block' : 'none' }} data-tab-content>
