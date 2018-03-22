@@ -1,5 +1,8 @@
 # React-Boilerplate
 React Boilerplate using webpack, express and NodeJS
+```
+THIS BOILER PLATE IS STILL UNDER DEVELOPMENT
+```
 
 This is a project to learn React using webpack, express and NodeJS.
 It is using Atomic Design Methodolgy with Foundation 6
