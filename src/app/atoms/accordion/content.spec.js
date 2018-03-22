@@ -15,6 +15,14 @@ describe('Accordion Atom <Content />', function () {
     this.wrapper = shallow((<Content>{this.mockChildrenText}</Content>));
   });
 
+  it('Calls componentWillMount', () => {
+    sinon.spy(Content.prototype, 'componentWillMount');
+
+    const mountWrapper = mount((<Content />));
+    expect(mountWrapper.instance().componentWillMount.calledOnce).to.equal(true);
+  });
+
+
   it('Calls componentDidMount', () => {
     sinon.spy(Content.prototype, 'componentDidMount');
 
@@ -35,7 +43,7 @@ describe('Accordion Atom <Content />', function () {
     expect(this.wrapper.get(0).props['data-tab-content']).to.eql(true);
   });
 
-  it('Initialized with state foo', () => {
+  it('Initialized with state isLoading', () => {
     expect(this.wrapper.state().isLoading).to.eql(false);
   });
 

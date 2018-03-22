@@ -16,6 +16,13 @@ describe('Accordion Atom <Title />', function () {
     this.wrapper = shallow((<Title className={this.mockClassName}>{this.mockChildrenText}</Title>));
   });
 
+  it('Calls componentWillMount', () => {
+    sinon.spy(Title.prototype, 'componentWillMount');
+
+    const mountWrapper = mount((<Title />));
+    expect(mountWrapper.instance().componentWillMount.calledOnce).to.equal(true);
+  });
+
   it('Calls componentDidMount', () => {
     sinon.spy(Title.prototype, 'componentDidMount');
 
@@ -33,7 +40,7 @@ describe('Accordion Atom <Title />', function () {
     expect(this.wrapper.get(0).props.className).to.eql(this.mockClassName);
   });
 
-  it('Initialized with state foo', () => {
+  it('Initialized with state isLoading', () => {
     expect(this.wrapper.state().isLoading).to.eql(false);
   });
 
