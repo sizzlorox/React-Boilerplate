@@ -9,7 +9,6 @@ class Navigation extends React.Component {
   // Should initialize state in constructor instead of getInitialState when using ES6 Classes
   constructor(props) {
     super(props);
-    console.log(styles.titleArea);
     // Locally defined state
     this.state = {
       foo: 'bar'

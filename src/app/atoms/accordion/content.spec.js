@@ -2,7 +2,7 @@ const React = require('react');
 const { expect } = require('chai');
 const { shallow, mount, render } = require('enzyme');
 const sinon = require('sinon');
-const { Route, Switch, BrowserRouter } = require('react-router-dom');
+// const { Route, Switch, BrowserRouter } = require('react-router-dom');
 
 // Components
 const Content = require('./Content');
@@ -18,16 +18,15 @@ describe('Accordion Atom <Content />', function () {
   it('Calls componentWillMount', () => {
     sinon.spy(Content.prototype, 'componentWillMount');
 
-    const mountWrapper = mount((<Content />));
-    expect(mountWrapper.instance().componentWillMount.calledOnce).to.equal(true);
+    const wrapper = shallow((<Content />));
+    expect(Content.prototype.componentWillMount.calledOnce).to.equal(true);
   });
-
 
   it('Calls componentDidMount', () => {
     sinon.spy(Content.prototype, 'componentDidMount');
 
-    const mountWrapper = mount((<Content />));
-    expect(mountWrapper.instance().componentDidMount.calledOnce).to.equal(true);
+    const wrapper = shallow((<Content />));
+    expect(Content.prototype.componentDidMount.calledOnce).to.equal(true);
   });
 
   it('Correct types', () => {

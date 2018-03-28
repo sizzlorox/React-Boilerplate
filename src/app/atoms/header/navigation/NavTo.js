@@ -1,7 +1,9 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 const { Link } = require('react-router-dom');
-const styles = require('../../../app.scss');
+
+// Atoms
+const Loading = require('../../loading/Loading');
 
 class NavTo extends React.Component {
   // Should initialize state in constructor instead of getInitialState when using ES6 Classes
@@ -12,14 +14,24 @@ class NavTo extends React.Component {
     };
   }
 
+  componentWillMount() {
+    this.setState({ isLoading: true });
+  }
+
+  componentDidMount() {
+    this.setState({ isLoading: false });
+  }
+
   render() {
-    return (
-      <li>
-        <Link to={this.props.url}>
-          {this.props.children}
-        </Link>
-      </li>
-    );
+    return this.state.isLoading ?
+      (<Loading />)
+      : (
+        <li>
+          <Link to={this.props.url}>
+            {this.props.children}
+          </Link>
+        </li>
+      );
   }
 }
 module.exports = NavTo;
