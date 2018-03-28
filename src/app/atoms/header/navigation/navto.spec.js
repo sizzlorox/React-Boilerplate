@@ -19,18 +19,14 @@ describe('Navigation Atom <NavTo />', function () {
   it('Calls componentWillMount', () => {
     sinon.spy(NavTo.prototype, 'componentWillMount');
 
-    const wrapper = shallow((
-      <NavTo url={this.mockUrl} />
-    ));
+    const wrapper = shallow((<NavTo url={this.mockUrl} />));
     expect(NavTo.prototype.componentWillMount.calledOnce).to.equal(true);
   });
 
   it('Calls componentDidMount', () => {
     sinon.spy(NavTo.prototype, 'componentDidMount');
 
-    const wrapper = shallow((
-      <NavTo url={this.mockUrl} />
-    ));
+    const wrapper = shallow((<NavTo url={this.mockUrl} />));
     expect(NavTo.prototype.componentDidMount.calledOnce).to.equal(true);
   });
 

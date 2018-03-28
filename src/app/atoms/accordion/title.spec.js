@@ -2,7 +2,6 @@ const React = require('react');
 const { expect } = require('chai');
 const { shallow, mount, render } = require('enzyme');
 const sinon = require('sinon');
-// const { Route, Switch, BrowserRouter } = require('react-router-dom');
 
 // Components
 const Title = require('./Title');
