@@ -4,6 +4,9 @@ const { shallow, mount, render } = require('enzyme');
 const sinon = require('sinon');
 const { Route, Switch, BrowserRouter } = require('react-router-dom');
 
+// Atoms
+const Text = require('../../atoms/footer/Text');
+
 // Components
 const Footer = require('./Footer');
 
@@ -36,6 +39,11 @@ describe('<Footer />', function () {
 
   it('Initialized with state foo', () => {
     expect(this.wrapper.state().isLoading).to.eql(false);
+  });
+
+  it('Correct types', () => {
+    expect(this.wrapper.get(0).type).to.eql('div');
+    expect(this.wrapper.find('Text').get(0).type).to.eql(Text);
   });
 
   it('Correct props', () => {

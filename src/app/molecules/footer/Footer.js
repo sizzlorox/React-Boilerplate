@@ -3,7 +3,7 @@ const ReactDOM = require('react-dom');
 
 // Atoms
 const Loading = require('../../atoms/loading/Loading');
-const Text = require('../../atoms/Text');
+const Text = require('../../atoms/footer/Text');
 
 class Footer extends React.Component {
   // Should initialize state in constructor instead of getInitialState when using ES6 Classes
