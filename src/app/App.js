@@ -6,6 +6,7 @@ require('./app.scss');
 
 // Pages
 const HomePage = require('./pages/home/Home');
+const AboutPage = require('./pages/about/About');
 const FaqPage = require('./pages/faq/Faq');
 
 class App extends React.Component {
@@ -33,6 +34,7 @@ class App extends React.Component {
       : (
         <Switch>
           <Route exact path='/' component={HomePage} />
+          <Route exact path='/about' component={AboutPage} />
           <Route exact path='/faq' component={FaqPage} />
           <Route component={HomePage} />
         </Switch>

@@ -3,12 +3,13 @@ const ReactDOM = require('react-dom');
 const ReactLoading = require('react-loading');
 const styles = require('../../app.scss');
 
-// Components
+// Atoms
 const Loading = require('../../atoms/loading/Loading');
-const Navigation = require('../../molecules/header/navigation/Navigation');
 
-const sideBarLeft = `${styles.aside} ${styles.asideLeft}`;
-const sideBarRight = `${styles.aside} ${styles.asideRight}`;
+// Organism
+const HeaderOrganism = require('../../organisms/header/Header');
+const QuestionsOrganism = require('../../organisms/faq/Questions');
+const FooterOrganism = require('../../organisms/footer/Footer');
 
 class About extends React.Component {
   // Should initialize state in constructor instead of getInitialState when using ES6 Classes
@@ -16,7 +17,6 @@ class About extends React.Component {
     super(props);
     // Locally defined state
     this.state = {
-      foo: 'bar',
       isLoading: true
     };
   }
@@ -34,7 +34,7 @@ class About extends React.Component {
       (<Loading />)
       : (
         <div>
-          <Navigation />
+          <HeaderOrganism />
           <h1>
             About
           </h1>
