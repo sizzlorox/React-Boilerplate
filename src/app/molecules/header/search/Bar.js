@@ -4,6 +4,7 @@ const { Link } = require('react-router-dom');
 const styles = require('../../../app.scss');
 
 // Atoms
+const Loading = require('../../../atoms/loading/Loading');
 const Input = require('../../../atoms/search/Input');
 const Button = require('../../../atoms/search/Button');
 
@@ -16,8 +17,18 @@ class Bar extends React.Component {
     };
   }
 
+  componentWillMount() {
+    this.setState({ isLoading: true });
+  }
+
+  componentDidMount() {
+    this.setState({ isLoading: false });
+  }
+
   render() {
-    return (
+    return this.state.isLoading ?
+      (<Loading />)
+      : (
       <ul className={styles.menu}>
         <Input />
         <Button />

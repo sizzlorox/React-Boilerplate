@@ -2,6 +2,9 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 const styles = require('../../app.scss');
 
+// Atoms
+const Loading = require('../../atoms/loading/Loading');
+
 // Molecules
 const AccordionMolecule = require('../../molecules/accordion/Accordion');
 
@@ -11,24 +14,34 @@ class Questions extends React.Component {
     super(props);
     // Locally defined state
     this.state = {
-      foo: 'bar'
+      isLoading: true
     };
   }
 
+  componentWillMount() {
+    this.setState({ isLoading: true });
+  }
+
+  componentDidMount() {
+    this.setState({ isLoading: false });
+  }
+
   render() {
-    return (
-      <ul className={styles.accordion} data-accordion data-multi-expand='true'>
-        <AccordionMolecule title='What is the point of this boilerplate?'>
-          This boilerplate is to learn on how to use React while reaching out to others to contribute their knowledge on efficiently and cleanly utilizing ReactJS
-        </AccordionMolecule>
-        <AccordionMolecule title='Why are you doing this?'>
-          To learn and also to help others.
-        </AccordionMolecule>
-        <AccordionMolecule title='Is there anything I can do to help?'>
-          Contribute what you know about React!
-        </AccordionMolecule>
-      </ul>
-    )
+    return this.state.isLoading ?
+      (<Loading />)
+      : (
+        <ul className={styles.accordion} data-accordion data-multi-expand='true'>
+          <AccordionMolecule title='What is the point of this boilerplate?'>
+            This boilerplate is to learn on how to use React while reaching out to others to contribute their knowledge on efficiently and cleanly utilizing ReactJS
+          </AccordionMolecule>
+          <AccordionMolecule title='Why are you doing this?'>
+            To learn and also to help others.
+          </AccordionMolecule>
+          <AccordionMolecule title='Is there anything I can do to help?'>
+            Contribute what you know about React!
+          </AccordionMolecule>
+        </ul>
+      )
   }
 }
 module.exports = Questions;

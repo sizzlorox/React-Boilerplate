@@ -1,8 +1,11 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 
+// Atoms
+const Loading = require('../../atoms/loading/Loading');
+
 // Molecules
-const FooterMolecules = require('../../molecules/footer/Footer');
+const FooterMolecule = require('../../molecules/footer/Footer');
 
 class Footer extends React.Component {
   // Should initialize state in constructor instead of getInitialState when using ES6 Classes
@@ -10,16 +13,26 @@ class Footer extends React.Component {
     super(props);
     // Locally defined state
     this.state = {
-      foo: 'bar'
+      isLoading: true
     };
   }
 
+  componentWillMount() {
+    this.setState({ isLoading: true });
+  }
+
+  componentDidMount() {
+    this.setState({ isLoading: false });
+  }
+
   render() {
-    return (
-      <footer>
-        <FooterMolecules />
-      </footer>
-    )
+    return this.state.isLoading ?
+      (<Loading />)
+      : (
+        <footer>
+          <FooterMolecule />
+        </footer>
+      )
   }
 }
 module.exports = Footer;

@@ -3,6 +3,7 @@ const ReactDOM = require('react-dom');
 const styles = require('../../../app.scss');
 
 // Atoms
+const Loading = require('../../../atoms/loading/Loading');
 const NavTo = require('../../../atoms/header/navigation/NavTo');
 
 class Navigation extends React.Component {
@@ -11,26 +12,36 @@ class Navigation extends React.Component {
     super(props);
     // Locally defined state
     this.state = {
-      foo: 'bar'
+      isLoading: true
     };
   }
 
+  componentWillMount() {
+    this.setState({ isLoading: true });
+  }
+
+  componentDidMount() {
+    this.setState({ isLoading: false });
+  }
+
   render() {
-    return (
-      <section>
-        <ul className={styles.menu}>
-          <NavTo url='/'>
-            Home
-          </NavTo>
-          <NavTo url='/about'>
-            About
-          </NavTo>
-          <NavTo url='/faq'>
-            FAQ
-          </NavTo>
-        </ul>
-      </section>
-    )
+    return this.state.isLoading ?
+      (<Loading />)
+      : (
+        <section>
+          <ul className={styles.menu}>
+            <NavTo url='/'>
+              Home
+            </NavTo>
+            <NavTo url='/about'>
+              About
+            </NavTo>
+            <NavTo url='/faq'>
+              FAQ
+            </NavTo>
+          </ul>
+        </section>
+      )
   }
 }
 module.exports = Navigation;

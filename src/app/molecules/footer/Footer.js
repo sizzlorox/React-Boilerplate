@@ -2,6 +2,7 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 
 // Atoms
+const Loading = require('../../atoms/loading/Loading');
 const Text = require('../../atoms/Text');
 
 class Footer extends React.Component {
@@ -14,14 +15,24 @@ class Footer extends React.Component {
     };
   }
 
+  componentWillMount() {
+    this.setState({ isLoading: true });
+  }
+
+  componentDidMount() {
+    this.setState({ isLoading: false });
+  }
+
   render() {
-    return (
-      <div>
-        <Text className='four columns offset-by-six'>
-          Copyright here.
-        </Text>
-      </div>
-    )
+    return this.state.isLoading ?
+      (<Loading />)
+      : (
+        <div>
+          <Text className='four columns offset-by-six'>
+            Copyright here.
+          </Text>
+        </div>
+      )
   }
 }
 module.exports = Footer;
