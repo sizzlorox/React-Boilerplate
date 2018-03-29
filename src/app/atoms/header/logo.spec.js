@@ -2,6 +2,7 @@ const React = require('react');
 const { expect } = require('chai');
 const { shallow, mount, render } = require('enzyme');
 const sinon = require('sinon');
+const { Link } = require('react-router-dom');
 
 // Components
 const Logo = require('./Logo');
@@ -29,15 +30,15 @@ describe('Header Atom <Logo />', function () {
   });
 
   it('Correct types', () => {
-    expect(this.wrapper.get(0).type).to.eql('a');
-    expect(this.wrapper.find('a')).to.have.length(1);
+    expect(this.wrapper.get(0).type).to.eql(Link);
+    expect(this.wrapper.find(Link)).to.have.length(1);
     expect(this.wrapper.find('img')).to.have.length(1);
     expect(this.wrapper.get(0).props.children.type).to.eql('img');
   });
 
   it('Correct props', () => {
     expect(this.wrapper.get(0).props.children.props.src).to.eql(this.mockSrc);
-    expect(this.wrapper.get(0).props.href).to.eql('/');
+    expect(this.wrapper.get(0).props.to).to.eql('/');
   });
 
   it('Initialized with state isLoading', () => {

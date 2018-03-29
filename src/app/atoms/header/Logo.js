@@ -1,6 +1,7 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 const styles = require('../../app.scss');
+const { Link } = require('react-router-dom');
 
 // Atoms
 const Loading = require('../loading/Loading');
@@ -26,9 +27,9 @@ class Logo extends React.Component {
     return this.state.isLoading ?
       (<Loading />)
       : (
-        <a className={styles.logo} href='/'>
+        <Link className={styles.logo} to='/'>
           <img src={this.props.imageUrl}></img>
-        </a>
+        </Link>
       );
   }
 }
