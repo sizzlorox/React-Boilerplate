@@ -1,5 +1,6 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
+const styles = require('../../app.scss');
 
 // Atoms
 const Loading = require('../../atoms/loading/Loading');
@@ -29,7 +30,7 @@ class Footer extends React.Component {
     return this.state.isLoading ?
       (<Loading />)
       : (
-        <footer>
+        <footer className={`${styles.gridX} ${styles.gridPaddingX}`}>
           <FooterMolecule />
         </footer>
       )

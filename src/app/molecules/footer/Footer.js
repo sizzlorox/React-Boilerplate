@@ -1,5 +1,6 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
+const styles = require('../../app.scss');
 
 // Atoms
 const Loading = require('../../atoms/loading/Loading');
@@ -27,8 +28,8 @@ class Footer extends React.Component {
     return this.state.isLoading ?
       (<Loading />)
       : (
-        <div>
-          <Text className='four columns offset-by-six'>
+        <div className={`${styles.cell} ${styles.mediumCellBlockContainer} ${styles.alignCenterMiddle}`}>
+          <Text>
             Copyright here.
           </Text>
         </div>
