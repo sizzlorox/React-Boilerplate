@@ -1,7 +1,7 @@
 # React-Boilerplate
 React Boilerplate using webpack, express and NodeJS
 ```
-THIS BOILER PLATE IS STILL UNDER DEVELOPMENT
+THIS BOILER PLATE IS STILL UNDERDEVELOPMENT
 ```
 
 This is a project to learn React using webpack, express and NodeJS.
