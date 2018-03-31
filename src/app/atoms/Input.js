@@ -1,16 +1,15 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
-const styles = require('../../app.scss');
+const { Link } = require('react-router-dom');
+const styles = require('../app.scss');
 
 // Atoms
-const Loading = require('../../atoms/loading/Loading');
-const Span = require('../../atoms/Span');
+const Loading = require('./loading/Loading');
 
-class Footer extends React.Component {
+class Input extends React.Component {
   // Should initialize state in constructor instead of getInitialState when using ES6 Classes
   constructor(props) {
     super(props);
-    // Locally defined state
     this.state = {
       isLoading: true
     };
@@ -28,12 +27,8 @@ class Footer extends React.Component {
     return this.state.isLoading ?
       (<Loading />)
       : (
-        <div className={`${styles.cell} ${styles.mediumCellBlockContainer} ${styles.alignCenterMiddle}`}>
-          <Span>
-            Copyright here.
-          </Span>
-        </div>
-      )
+        <input type={this.props.type} placeholder={this.props.placeholder}/>
+      );
   }
 }
-module.exports = Footer;
+module.exports = Input;

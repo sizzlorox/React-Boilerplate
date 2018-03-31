@@ -1,12 +1,11 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 const { Link } = require('react-router-dom');
-const styles = require('../../app.scss');
 
 // Atoms
 const Loading = require('../loading/Loading');
 
-class Input extends React.Component {
+class NavTo extends React.Component {
   // Should initialize state in constructor instead of getInitialState when using ES6 Classes
   constructor(props) {
     super(props);
@@ -27,10 +26,10 @@ class Input extends React.Component {
     return this.state.isLoading ?
       (<Loading />)
       : (
-        <li>
-          <input type="search" placeholder="Search"></input>
-        </li>
+        <Link to={this.props.url}>
+          {this.props.children}
+        </Link>
       );
   }
 }
-module.exports = Input;
+module.exports = NavTo;

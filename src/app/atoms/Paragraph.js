@@ -1,14 +1,10 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
-const { Link } = require('react-router-dom');
-const styles = require('../../../app.scss');
 
 // Atoms
-const Loading = require('../../../atoms/loading/Loading');
-const Input = require('../../../atoms/search/Input');
-const Button = require('../../../atoms/search/Button');
+const Loading = require('./loading/Loading');
 
-class Bar extends React.Component {
+class Paragraph extends React.Component {
   // Should initialize state in constructor instead of getInitialState when using ES6 Classes
   constructor(props) {
     super(props);
@@ -29,11 +25,10 @@ class Bar extends React.Component {
     return this.state.isLoading ?
       (<Loading />)
       : (
-      <ul className={styles.menu}>
-        <Input />
-        <Button />
-      </ul>
-    );
+        <p className={this.props.className}>
+          {this.props.children}
+        </p>
+      );
   }
 }
-module.exports = Bar;
+module.exports = Paragraph;

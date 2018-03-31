@@ -6,7 +6,7 @@ const styles = require('../../app.scss');
 // Atoms
 const Loading = require('../loading/Loading');
 
-class Button extends React.Component {
+class Title extends React.Component {
   // Should initialize state in constructor instead of getInitialState when using ES6 Classes
   constructor(props) {
     super(props);
@@ -27,12 +27,10 @@ class Button extends React.Component {
     return this.state.isLoading ?
       (<Loading />)
       : (
-        <li>
-          <button type="button" className={styles.button}>
-            Search
-          </button>
+        <li className={styles.menuText}>
+          {this.props.children}
         </li>
       );
   }
 }
-module.exports = Button;
+module.exports = Title;

@@ -1,12 +1,12 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 const { Link } = require('react-router-dom');
-const styles = require('../../app.scss');
+const styles = require('../app.scss');
 
 // Atoms
-const Loading = require('../../atoms/loading/Loading');
+const Loading = require('./loading/Loading');
 
-class Title extends React.Component {
+class Button extends React.Component {
   // Should initialize state in constructor instead of getInitialState when using ES6 Classes
   constructor(props) {
     super(props);
@@ -27,10 +27,10 @@ class Title extends React.Component {
     return this.state.isLoading ?
       (<Loading />)
       : (
-        <li className={styles.menuText}>
+        <button type={this.props.type} className={this.props.className}>
           {this.props.children}
-        </li>
+        </button>
       );
   }
 }
-module.exports = Title;
+module.exports = Button;

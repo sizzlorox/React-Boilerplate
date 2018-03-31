@@ -1,7 +1,7 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 
-class Text extends React.Component {
+class Span extends React.Component {
   // Should initialize state in constructor instead of getInitialState when using ES6 Classes
   constructor(props) {
     super(props);
@@ -18,4 +18,4 @@ class Text extends React.Component {
     );
   }
 }
-module.exports = Text;
+module.exports = Span;

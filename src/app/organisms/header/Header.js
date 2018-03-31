@@ -6,10 +6,10 @@ const styles = require('../../app.scss');
 const Loading = require('../../atoms/loading/Loading');
 
 // Molecules
-const Logo = require('../../atoms/header/Logo');
-const Title = require('../../atoms/header/Title');
-const Navigation = require('../../molecules/header/navigation/Navigation');
-const SearchBar = require('../../molecules/header/search/Bar');
+const Logo = require('../../atoms/navigation/Logo');
+const Title = require('../../atoms/navigation/Title');
+const Navigation = require('../../molecules/navigation/Navigation');
+const SearchBar = require('../../molecules/search/Bar');
 
 class Header extends React.Component {
   // Should initialize state in constructor instead of getInitialState when using ES6 Classes
