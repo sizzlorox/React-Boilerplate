@@ -1,6 +1,9 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 
+// Atoms
+const Loading = require('../../atoms/loading/Loading');
+
 // Organisms
 const HeaderOrganism = require('../../organisms/header/Header');
 const FooterOrganism = require('../../organisms/footer/Footer');
@@ -15,13 +18,21 @@ class Home extends React.Component {
     };
   }
 
+  componentWillMount() {
+    this.setState({ isLoading: true });
+  }
+
+  componentDidMount() {
+    this.setState({ isLoading: false });
+  }
+
   render() {
-    return (
-      <div>
-        <HeaderOrganism />
-        <FooterOrganism />
-      </div>
-    )
+    return this.state.isLoading ?
+      (<Loading />)
+      : (
+        <div>
+        </div>
+      )
   }
 }
 module.exports = Home;

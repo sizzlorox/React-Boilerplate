@@ -1,20 +1,16 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
-const ReactLoading = require('react-loading');
+const { Link } = require('react-router-dom');
+const styles = require('../../app.scss');
+// const $ = require('jquery');
 
 // Atoms
-const Loading = require('../../atoms/loading/Loading');
+const Loading = require('../loading/Loading');
 
-// Organism
-const HeaderOrganism = require('../../organisms/header/Header');
-const SectionOrganism = require('../../organisms/about/Section');
-const FooterOrganism = require('../../organisms/footer/Footer');
-
-class About extends React.Component {
+class DropDownItem extends React.Component {
   // Should initialize state in constructor instead of getInitialState when using ES6 Classes
   constructor(props) {
     super(props);
-    // Locally defined state
     this.state = {
       isLoading: true
     };
@@ -25,6 +21,8 @@ class About extends React.Component {
   }
 
   componentDidMount() {
+    // $(document).foundation();
+    console.log('Dropdownitem mounted');
     this.setState({ isLoading: false });
   }
 
@@ -32,10 +30,12 @@ class About extends React.Component {
     return this.state.isLoading ?
       (<Loading />)
       : (
-        <div>
-          <SectionOrganism />
-        </div>
-      )
+        <li role='menuitem'>
+          <Link to={this.props.url}>
+            {this.props.children}
+          </Link>
+        </li>
+      );
   }
 }
-module.exports = About;
+module.exports = DropDownItem;

@@ -1,21 +1,16 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
+const styles = require('../../app.scss');
 
 // Atoms
-const Loading = require('../../atoms/loading/Loading');
+const Loading = require('../loading/Loading');
 
-// Organism
-const HeaderOrganism = require('../../organisms/header/Header');
-const QuestionsOrganism = require('../../organisms/faq/Questions');
-const FooterOrganism = require('../../organisms/footer/Footer');
-
-class Faq extends React.Component {
+class DropDownSubject extends React.Component {
   // Should initialize state in constructor instead of getInitialState when using ES6 Classes
   constructor(props) {
     super(props);
-    // Locally defined state
     this.state = {
-      foo: 'bar'
+      isLoading: true
     };
   }
 
@@ -31,10 +26,15 @@ class Faq extends React.Component {
     return this.state.isLoading ?
       (<Loading />)
       : (
-        <section>
-          <QuestionsOrganism />
-        </section>
-      )
+        <li role='menuitem'>
+          <a>
+            {this.props.menuName}
+          </a>
+          <ul role='menu' className={`${styles.menu} ${styles.isDropdownSubmenu}`}>
+            {this.props.children}
+          </ul>
+        </li>
+      );
   }
 }
-module.exports = Faq;
+module.exports = DropDownSubject;

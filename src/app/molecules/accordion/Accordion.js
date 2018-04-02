@@ -31,7 +31,7 @@ class Accordion extends React.Component {
     handleClick(event) {
         this.setState({
             active: !this.state.active
-        })
+        });
     }
 
     render() {

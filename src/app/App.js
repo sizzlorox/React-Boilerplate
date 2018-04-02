@@ -1,8 +1,14 @@
+require('foundation-sites');
+require('./app.scss');
+
 const React = require('react');
 const { Route, Switch } = require('react-router-dom');
 const Loading = require('./atoms/loading/Loading');
+const $ = require('jquery');
 
-require('./app.scss');
+// Organisms
+const HeaderOrganism = require('./organisms/header/Header');
+const FooterOrganism = require('./organisms/footer/Footer');
 
 // Pages
 const HomePage = require('./pages/home/Home');
@@ -15,7 +21,6 @@ class App extends React.Component {
     super(props);
     // Locally defined state
     this.state = {
-      foo: 'bar',
       isLoading: true
     };
   }
@@ -25,6 +30,10 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    $(document).ready(() => {
+      console.log('test');
+      $(document).foundation();
+    });
     this.setState({ isLoading: false });
   }
 
@@ -32,12 +41,16 @@ class App extends React.Component {
     return this.state.isLoading ?
       (<Loading />)
       : (
-        <Switch>
-          <Route exact path='/' component={HomePage} />
-          <Route exact path='/about' component={AboutPage} />
-          <Route exact path='/faq' component={FaqPage} />
-          <Route component={HomePage} />
-        </Switch>
+        <div>
+          <HeaderOrganism />
+          <Switch>
+            <Route exact path='/' component={HomePage} />
+            <Route exact path='/about' component={AboutPage} />
+            <Route exact path='/faq' component={FaqPage} />
+            <Route component={HomePage} />
+          </Switch>
+          <FooterOrganism />
+        </div>
       )
   }
 }

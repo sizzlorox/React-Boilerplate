@@ -9,7 +9,8 @@ const Loading = require('../../atoms/loading/Loading');
 const Logo = require('../../atoms/navigation/Logo');
 const Title = require('../../atoms/navigation/Title');
 const Navigation = require('../../molecules/navigation/Navigation');
-const SearchBar = require('../../molecules/search/Bar');
+// const SearchBar = require('../../molecules/search/Bar');
+const ProfileDropDown = require('../../molecules/navigation/profile/ProfileDropDown');
 
 class Header extends React.Component {
   // Should initialize state in constructor instead of getInitialState when using ES6 Classes
@@ -43,9 +44,7 @@ class Header extends React.Component {
               <Navigation />
             </ul>
           </div>
-          <div className={styles.topBarMenuRight}>
-            <SearchBar />
-          </div>
+          <ProfileDropDown className={styles.topBarRight} />
         </div>
       )
   }
