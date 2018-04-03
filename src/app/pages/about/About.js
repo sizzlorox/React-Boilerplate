@@ -1,6 +1,7 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 const ReactLoading = require('react-loading');
+const $ = require('jquery');
 
 // Atoms
 const Loading = require('../../atoms/loading/Loading');
@@ -25,6 +26,9 @@ class About extends React.Component {
   }
 
   componentDidMount() {
+    $(document).ready(() => {
+      $(document).foundation();
+    });
     this.setState({ isLoading: false });
   }
 

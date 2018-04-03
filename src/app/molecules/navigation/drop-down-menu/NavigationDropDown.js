@@ -9,7 +9,7 @@ const DropDownMenu = require('../../../atoms/drop-down-menu/DropDownMenu');
 const DropDownSubject = require('../../../atoms/drop-down-menu/DropDownSubject');
 const DropDownItem = require('../../../atoms/drop-down-menu/DropDownItem');
 
-class ProfileDropDown extends React.Component {
+class NavigationDropDown extends React.Component {
   // Should initialize state in constructor instead of getInitialState when using ES6 Classes
   constructor(props) {
     super(props);
@@ -36,10 +36,13 @@ class ProfileDropDown extends React.Component {
               <DropDownItem url='/profile'>
                 Profile
               </DropDownItem>
+              <DropDownItem url='/settings'>
+                Settings
+              </DropDownItem>
             </DropDownSubject>
           </DropDownMenu>
         </div>
       );
   }
 }
-module.exports = ProfileDropDown;
+module.exports = NavigationDropDown;

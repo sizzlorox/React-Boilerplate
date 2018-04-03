@@ -12,12 +12,8 @@ class Accordion extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isLoading: true,
-            active: false
+            isLoading: true
         };
-
-        this.handleClick = this.handleClick.bind(this);
-        let dynamicClassName = `${styles.accordionItem}`;
     }
 
     componentWillMount() {
@@ -28,22 +24,15 @@ class Accordion extends React.Component {
         this.setState({ isLoading: false });
     }
 
-    handleClick(event) {
-        this.setState({
-            active: !this.state.active
-        });
-    }
-
     render() {
-        this.dynamicClassName = `${styles.accordionItem} ${this.state.active ? styles.isActive : ''}`;
         return this.state.isLoading ?
             (<Loading />)
             : (
-                <li className={this.dynamicClassName} onClick={this.handleClick} data-accordion-item>
+                <li className={styles.accordionItem} data-accordion-item>
                     <Title className={styles.accordionTitle}>
                         {this.props.title}
                     </Title>
-                    <Content className={`${styles.accordionContent}`} active={this.state.active}>
+                    <Content className={`${styles.accordionContent}`}>
                         {this.props.children}
                     </Content>
                 </li>

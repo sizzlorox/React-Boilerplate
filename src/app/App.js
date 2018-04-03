@@ -4,7 +4,6 @@ require('./app.scss');
 const React = require('react');
 const { Route, Switch } = require('react-router-dom');
 const Loading = require('./atoms/loading/Loading');
-const $ = require('jquery');
 
 // Organisms
 const HeaderOrganism = require('./organisms/header/Header');
@@ -30,10 +29,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    $(document).ready(() => {
-      console.log('test');
-      $(document).foundation();
-    });
     this.setState({ isLoading: false });
   }
 

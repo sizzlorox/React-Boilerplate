@@ -4,7 +4,6 @@ const styles = require('../../app.scss');
 
 // Atoms
 const Loading = require('../../atoms/loading/Loading');
-const Span = require('../../atoms/Span');
 
 class Footer extends React.Component {
   // Should initialize state in constructor instead of getInitialState when using ES6 Classes
@@ -28,10 +27,10 @@ class Footer extends React.Component {
     return this.state.isLoading ?
       (<Loading />)
       : (
-        <div className={`${styles.cell} ${styles.mediumCellBlockContainer} ${styles.alignCenterMiddle}`}>
-          <Span>
+        <div className={styles.alignCenterMiddle}>
+          <span>
             Copyright here.
-          </Span>
+          </span>
         </div>
       )
   }

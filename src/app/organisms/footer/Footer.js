@@ -30,7 +30,7 @@ class Footer extends React.Component {
     return this.state.isLoading ?
       (<Loading />)
       : (
-        <footer className={`${styles.gridX} ${styles.gridPaddingX}`}>
+        <footer className={styles.footer}>
           <FooterMolecule />
         </footer>
       )

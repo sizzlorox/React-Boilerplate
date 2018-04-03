@@ -1,5 +1,7 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
+const styles = require('../../app.scss');
+const $ = require('jquery');
 
 // Atoms
 const Loading = require('../../atoms/loading/Loading');
@@ -15,7 +17,7 @@ class Faq extends React.Component {
     super(props);
     // Locally defined state
     this.state = {
-      foo: 'bar'
+      isLoading: true
     };
   }
 
@@ -24,6 +26,9 @@ class Faq extends React.Component {
   }
 
   componentDidMount() {
+    $(document).ready(() => {
+      $(document).foundation();
+    });
     this.setState({ isLoading: false });
   }
 
@@ -32,7 +37,12 @@ class Faq extends React.Component {
       (<Loading />)
       : (
         <section>
-          <QuestionsOrganism />
+          <div className={styles.row}>
+            <h1 className={`${styles.column} ${styles.alignCenterMiddle} ${styles.h1} ${styles.mediumCellBlockContainer}`}>
+              Frequently Asked Questions
+            </h1>
+            <QuestionsOrganism />
+          </div>
         </section>
       )
   }

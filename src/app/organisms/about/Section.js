@@ -5,7 +5,6 @@ const styles = require('../../app.scss');
 
 // Atoms
 const Loading = require('../../atoms/loading/Loading');
-const Header1 = require('../../atoms/Header1');
 
 // Molecules
 const AboutInfo = require('../../molecules/about/AboutInfo');
@@ -33,10 +32,10 @@ class About extends React.Component {
     return this.state.isLoading ?
       (<Loading />)
       : (
-        <section className={`${styles.gridY} ${styles.gridPaddingY} ${styles.smallGridFrame}`}>
-          <Header1 className={`${styles.cell} ${styles.alignCenterMiddle} ${styles.shrink} ${styles.header} ${styles.mediumCellBlockContainer}`}>
+        <section className={styles.row}>
+          <h1 className={`${styles.cell} ${styles.alignCenterMiddle} ${styles.shrink} ${styles.h1} ${styles.mediumCellBlockContainer}`}>
             About
-          </Header1>
+          </h1>
           <AboutInfo />
         </section>
       )

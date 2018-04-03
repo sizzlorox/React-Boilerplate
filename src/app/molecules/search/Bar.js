@@ -5,8 +5,6 @@ const styles = require('../../app.scss');
 
 // Atoms
 const Loading = require('../../atoms/loading/Loading');
-const Input = require('../../atoms/Input');
-const Button = require('../../atoms/Button');
 
 class Bar extends React.Component {
   // Should initialize state in constructor instead of getInitialState when using ES6 Classes
@@ -31,12 +29,12 @@ class Bar extends React.Component {
       : (
         <ul className={styles.menu}>
           <li>
-            <Input type='search' placeholder='Search' />
+            <input type='search' placeholder='Search' />
           </li>
           <li>
-            <Button type='button' className={styles.button}>
+            <button type='button' className={styles.button}>
               Search
-            </Button>
+            </button>
           </li>
         </ul>
       );

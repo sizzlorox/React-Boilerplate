@@ -12,6 +12,7 @@ class Questions extends React.Component {
   // Should initialize state in constructor instead of getInitialState when using ES6 Classes
   constructor(props) {
     super(props);
+    console.log(styles);
     // Locally defined state
     this.state = {
       isLoading: true
@@ -30,7 +31,7 @@ class Questions extends React.Component {
     return this.state.isLoading ?
       (<Loading />)
       : (
-        <ul className={styles.accordion} data-accordion data-multi-expand='true'>
+        <ul className={`${styles.column} ${styles.alignCenterMiddle} ${styles.accordion}`} data-accordion data-multi-expand='true' data-allow-all-closed='true'>
           <AccordionMolecule title='What is the point of this boilerplate?'>
             This boilerplate is to learn on how to use React while reaching out to others to contribute their knowledge on efficiently and cleanly utilizing ReactJS
           </AccordionMolecule>
