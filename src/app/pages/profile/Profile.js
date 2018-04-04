@@ -46,6 +46,16 @@ class Profile extends React.Component {
                 </span>
               </div>
             </div>
+            <div className={styles.gridContainer}>
+              <div className={`${styles.gridX} ${styles.gridMarginX} ${styles.alignCenterMiddle}`}>
+                <span className={`${styles.cell}`}>
+                  TEST
+                </span>
+                <span className={`${styles.cell}`}>
+                  TEST2
+                </span>
+              </div>
+            </div>
           </section>
         </div>
       )
