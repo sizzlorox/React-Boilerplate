@@ -1,6 +1,7 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 const styles = require('../../app.scss');
+const $ = require('jquery');
 
 // Atoms
 const Loading = require('../../atoms/loading/Loading');
@@ -27,6 +28,9 @@ class Header extends React.Component {
   }
 
   componentDidMount() {
+    $('#header').ready(() => {
+      $('#header').foundation();
+    });
     this.setState({ isLoading: false });
   }
 
@@ -34,7 +38,7 @@ class Header extends React.Component {
     return this.state.isLoading ?
       (<Loading />)
       : (
-        <div className={styles.topBar}>
+        <div id='header' className={styles.topBar}>
           <div className={styles.topBarLeft}>
             <ul className={`${styles.menu}`}>
               <Title>

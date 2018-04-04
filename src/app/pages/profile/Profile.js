@@ -1,20 +1,20 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
-const ReactLoading = require('react-loading');
 const $ = require('jquery');
+const styles = require('../../app.scss');
 
 // Atoms
 const Loading = require('../../atoms/loading/Loading');
 
-// Organism
+// Organisms
 const HeaderOrganism = require('../../organisms/header/Header');
-const SectionOrganism = require('../../organisms/about/Section');
 const FooterOrganism = require('../../organisms/footer/Footer');
 
-class About extends React.Component {
+class Profile extends React.Component {
   // Should initialize state in constructor instead of getInitialState when using ES6 Classes
   constructor(props) {
     super(props);
+    console.log(styles);
     // Locally defined state
     this.state = {
       isLoading: true
@@ -26,8 +26,8 @@ class About extends React.Component {
   }
 
   componentDidMount() {
-    $('#about').ready(() => {
-      $('#about').foundation();
+    $('#profile').ready(() => {
+      $('#profile').foundation();
     });
     this.setState({ isLoading: false });
   }
@@ -36,10 +36,19 @@ class About extends React.Component {
     return this.state.isLoading ?
       (<Loading />)
       : (
-        <div id='about'>
-          <SectionOrganism />
+        <div id='profile'>
+          <section>
+            <div className={styles.gridContainer}>
+              <div className={`${styles.gridX} ${styles.gridMarginX} ${styles.alignCenterLeft}`}>
+                <img className={`${styles.cell} ${styles.shrink} ${styles.thumbnail}`} src='http://via.placeholder.com/64x64' />
+                <span className={`${styles.cell}`}>
+                  UserName
+                </span>
+              </div>
+            </div>
+          </section>
         </div>
       )
   }
 }
-module.exports = About;
+module.exports = Profile;

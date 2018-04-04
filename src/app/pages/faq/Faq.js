@@ -26,8 +26,8 @@ class Faq extends React.Component {
   }
 
   componentDidMount() {
-    $(document).ready(() => {
-      $(document).foundation();
+    $('#faq').ready(() => {
+      $('#faq').foundation();
     });
     this.setState({ isLoading: false });
   }
@@ -36,12 +36,14 @@ class Faq extends React.Component {
     return this.state.isLoading ?
       (<Loading />)
       : (
-        <section>
-          <div className={styles.row}>
-            <h1 className={`${styles.column} ${styles.alignCenterMiddle} ${styles.h1} ${styles.mediumCellBlockContainer}`}>
+        <section id='faq'>
+          <div className={`${styles.gridY}`}>
+            <h1 className={`${styles.cell} ${styles.alignCenterMiddle} ${styles.h1} ${styles.mediumCellBlockContainer}`}>
               Frequently Asked Questions
             </h1>
-            <QuestionsOrganism />
+            <div className={`${styles.gridX} ${styles.alignCenterMiddle}`}>
+              <QuestionsOrganism />
+            </div>
           </div>
         </section>
       )

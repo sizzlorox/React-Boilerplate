@@ -24,8 +24,8 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    $(document).ready(() => {
-      $(document).foundation();
+    $('#home').ready(() => {
+      $('#home').foundation();
     });
     this.setState({ isLoading: false });
   }
@@ -34,7 +34,7 @@ class Home extends React.Component {
     return this.state.isLoading ?
       (<Loading />)
       : (
-        <div>
+        <div id='home'>
         </div>
       )
   }
