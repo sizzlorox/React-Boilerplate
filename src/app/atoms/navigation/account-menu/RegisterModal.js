@@ -1,6 +1,7 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 const styles = require('../../../app.scss');
+const $ = require('jquery');
 
 // Atoms
 const Loading = require('../../loading/Loading');
@@ -21,6 +22,10 @@ class LoginModal extends React.Component {
 
   componentDidMount() {
     this.setState({ isLoading: false });
+  }
+
+  componentWillUnmount() {
+    $(`#${this.props.id}`).foundation('close');
   }
 
   render() {

@@ -19,7 +19,7 @@ class DropDownMenu extends React.Component {
     }
 
     componentDidMount() {
-        this.setState({ isLoading: false });
+      this.setState({ isLoading: false });
     }
 
     render() {

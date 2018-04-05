@@ -21,28 +21,40 @@ class AccountManagement extends React.Component {
 
     this.handleLogin = this.handleLogin.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
+
+    // Using jQuery on loginModalSubmit to not lose reference to e.preventDefault() causing second click on submit button to refresh page
+    $(document).on('click', '#loginSubmit', (e) => {
+      e.preventDefault();
+      // TODO Validate username and password by doing a request to API
+      if (e.currentTarget.form[0].value === 'test' && e.currentTarget.form[1].value === 'test') {
+        // TODO set to login token generated from API
+        localStorage.setItem('token', true);
+        this.handleLogin();
+      }
+    });
   }
 
   componentWillMount() {
   }
 
   componentDidMount() {
+    console.log('AM Mounted');
+
   }
 
   handleLogin(e) {
-    e.preventDefault();
-    // TODO Validate username and password by doing a request to API
-    if (this.refs.loginModal.refs.username.value === 'test' && this.refs.loginModal.refs.password.value === 'test') {
-      $('#loginModal').foundation('close');
-      // TODO set to login token generated from API
-      localStorage.setItem('token', true);
-      this.setState({ authenticated: true });
-    }
+    this.setState({ authenticated: localStorage.getItem('token') });
+    $('#header').ready(() => {
+      $('#header').foundation();
+    });
   }
 
   handleLogout() {
     localStorage.clear();
-    this.setState({ authenticated: false });
+    this.setState({ authenticated: localStorage.getItem('token') });
+    $('#header').ready(() => {
+      $('#header').foundation();
+    });
   }
 
   render() {
@@ -66,15 +78,17 @@ class AccountManagement extends React.Component {
       )
       :
       (
-        <div className={`${this.props.className} ${styles.menu} ${styles.tiny} ${styles.buttonGroup}`}>
-          <button className={styles.button} data-toggle='loginModal'>
-            Login
-          </button>
-          <LoginModal onSubmit={this.handleLogin} id='loginModal' ref='loginModal' />
-          <button className={styles.button} data-toggle='registerModal'>
-            Register
-          </button>
-          <RegisterModal id='registerModal' />
+        <div>
+          <div className={`${this.props.className} ${styles.menu} ${styles.tiny} ${styles.buttonGroup}`}>
+            <button className={styles.button} data-toggle='loginModal'>
+              Login
+            </button>
+            <LoginModal onSubmit={this.handleLogin} id='loginModal' ref='loginModal' />
+            <button className={styles.button} data-toggle='registerModal'>
+              Register
+            </button>
+            <RegisterModal id='registerModal' />
+          </div>
         </div>
       )
   }

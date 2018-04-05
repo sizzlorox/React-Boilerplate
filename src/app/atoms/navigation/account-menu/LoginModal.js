@@ -1,6 +1,7 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 const styles = require('../../../app.scss');
+const $ = require('jquery');
 
 // Atoms
 const Loading = require('../../loading/Loading');
@@ -20,7 +21,12 @@ class LoginModal extends React.Component {
   }
 
   componentDidMount() {
+    console.log('LM Mounted')
     this.setState({ isLoading: false });
+  }
+
+  componentWillUnmount() {
+    $(`#${this.props.id}`).foundation('close');
   }
 
   render() {
@@ -30,7 +36,7 @@ class LoginModal extends React.Component {
       : (
         <div className={styles.reveal} id={this.props.id} data-reveal data-close-on-click='true'>
           <h1>Login</h1>
-          <form onSubmit={this.props.onSubmit}>
+          <form>
             <div className={styles.gridContainer}>
               <div className={`${styles.gridX} ${styles.gridPaddingX}`}>
                 <div className={`${styles.medium6} ${styles.cell}`}>
@@ -42,7 +48,7 @@ class LoginModal extends React.Component {
                   <input type='password' ref='password' autoComplete='current-password' maxLength='250' required />
                 </div>
                 <div className={`${styles.buttonGroup} ${styles.alignRight} ${styles.cell}`}>
-                  <button type='submit' className={styles.button}>
+                  <button type='submit' id='loginSubmit' className={styles.button}>
                     Submit
                   </button>
                 </div>
