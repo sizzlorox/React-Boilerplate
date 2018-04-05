@@ -34,16 +34,16 @@ class LoginModal extends React.Component {
                 <div className={`${styles.gridX} ${styles.gridPaddingX}`}>
                   <div className={`${styles.medium6} ${styles.cell}`}>
                     <label>Username</label>
-                    <input type='text' autoComplete='username' maxlength='20' required />
+                    <input type='text' autoComplete='username' maxLength='20' required />
                   </div>
                   <div className={`${styles.medium6} ${styles.cell}`}>
                     <label>Password</label>
-                    <input type='password' aria-describedby='passwordHelpText' autoComplete='new-password' maxlength='250' required />
+                    <input type='password' aria-describedby='passwordHelpText' autoComplete='new-password' maxLength='250' required />
                     <p className={styles.helpText} id='passwordHelpText'>Your password must have at least 10 characters and a number.</p>
                   </div>
                   <div className={`${styles.medium6} ${styles.cell}`}>
                     <label>Confirm Password</label>
-                    <input type='password' aria-describedby='passwordHelpText' autoComplete='new-password' maxlength='250' required />
+                    <input type='password' aria-describedby='passwordHelpText' autoComplete='new-password' maxLength='250' required />
                     <p className={styles.helpText} id='passwordHelpText'>Please repeat your password.</p>
                   </div>
                   <div className={`${styles.buttonGroup} ${styles.alignRight} ${styles.cell}`}>

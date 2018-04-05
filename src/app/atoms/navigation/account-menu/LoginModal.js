@@ -26,7 +26,8 @@ class LoginModal extends React.Component {
   }
 
   handleSubmit(formInfo) {
-    alert(JSON.stringify(formInfo));
+    const test = JSON.stringify(formInfo);
+    alert(test);
   }
 
   render() {
@@ -40,11 +41,11 @@ class LoginModal extends React.Component {
               <div className={`${styles.gridX} ${styles.gridPaddingX}`}>
                 <div className={`${styles.medium6} ${styles.cell}`}>
                   <label>Username</label>
-                  <input type='text' autoComplete='username' maxlength='20' required />
+                  <input type='text' autoComplete='username' maxLength='20' required />
                 </div>
                 <div className={`${styles.medium6} ${styles.cell}`}>
                   <label>Password</label>
-                  <input type='password' autoComplete='current-password' maxlength='250' required />
+                  <input type='password' autoComplete='current-password' maxLength='250' required />
                 </div>
                 <div className={`${styles.buttonGroup} ${styles.alignRight} ${styles.cell}`}>
                   <button type='submit' className={styles.button}>
