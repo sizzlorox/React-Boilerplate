@@ -1,10 +1,10 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 const styles = require('../../app.scss');
+const { NavLink } = require('react-router-dom');
 
 // Atoms
 const Loading = require('../../atoms/loading/Loading');
-const NavTo = require('../../atoms/navigation/NavTo');
 
 class Navigation extends React.Component {
   // Should initialize state in constructor instead of getInitialState when using ES6 Classes
@@ -31,19 +31,31 @@ class Navigation extends React.Component {
         <section>
           <ul className={styles.menu}>
             <li>
-              <NavTo url='/'>
+              <NavLink to={{
+                pathname: '/home',
+                activeClassName: styles.isActive,
+                state: { fromNavigation: true }
+              }}>
                 Home
-              </NavTo>
+              </NavLink>
             </li>
             <li>
-              <NavTo url='/about'>
+              <NavLink to={{
+                pathname: '/about',
+                activeClassName: styles.isActive,
+                state: { fromNavigation: true }
+              }}>
                 About
-              </NavTo>
+              </NavLink>
             </li>
             <li>
-              <NavTo url='/faq'>
+              <NavLink to={{
+                pathname: '/faq',
+                activeClassName: styles.isActive,
+                state: { fromNavigation: true }
+              }}>
                 FAQ
-              </NavTo>
+              </NavLink>
             </li>
           </ul>
         </section>

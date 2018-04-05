@@ -7,10 +7,8 @@ const $ = require('jquery');
 const Loading = require('../../atoms/loading/Loading');
 
 // Molecules
-const Logo = require('../../atoms/navigation/Logo');
-const Title = require('../../atoms/navigation/Title');
 const Navigation = require('../../molecules/navigation/Navigation');
-// const SearchBar = require('../../molecules/search/Bar');
+const AccountManagement = require('../../molecules/navigation/account-menu/AccountManagement');
 const NavigationDropDown = require('../../molecules/navigation/drop-down-menu/NavigationDropDown');
 
 class Header extends React.Component {
@@ -19,7 +17,8 @@ class Header extends React.Component {
     super(props);
     // Locally defined state
     this.state = {
-      isLoading: true
+      isLoading: true,
+      authenticated: false
     };
   }
 
@@ -32,6 +31,10 @@ class Header extends React.Component {
       $('#header').foundation();
     });
     this.setState({ isLoading: false });
+
+    if (localStorage.getItem('token')) {
+      this.setState({ authenticated: true });
+    }
   }
 
   render() {
@@ -41,13 +44,13 @@ class Header extends React.Component {
         <div id='header' className={styles.topBar}>
           <div className={styles.topBarLeft}>
             <ul className={`${styles.menu}`}>
-              <Title>
-                Boilerplate
-              </Title>
+              <li className={styles.menuText}>
+                BoilerPlate
+              </li>
               <Navigation />
             </ul>
           </div>
-          <NavigationDropDown className={styles.topBarRight} />
+          {this.state.authenticated ? <NavigationDropDown className={styles.topBarRight} /> : <AccountManagement className={styles.topBarRight} />}
         </div>
       )
   }
