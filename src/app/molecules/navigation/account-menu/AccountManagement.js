@@ -24,9 +24,9 @@ class AccountManagement extends React.Component {
 
     // Using jQuery on loginModalSubmit to not lose reference to e.preventDefault() causing second click on submit button to refresh page
     $(document).on('click', '#loginSubmit', (e) => {
-      e.preventDefault();
       // TODO Validate username and password by doing a request to API
       if (e.currentTarget.form[0].value === 'test' && e.currentTarget.form[1].value === 'test') {
+        e.preventDefault();
         // TODO set to login token generated from API
         localStorage.setItem('token', true);
         this.handleLogin();
@@ -57,6 +57,7 @@ class AccountManagement extends React.Component {
     });
   }
 
+  // TODO: Create Register handler
   render() {
     return this.state.authenticated
       ? (

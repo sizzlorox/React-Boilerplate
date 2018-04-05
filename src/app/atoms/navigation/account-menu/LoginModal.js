@@ -55,7 +55,7 @@ class LoginModal extends React.Component {
               </div>
             </div>
           </form>
-          <button className={styles.closeButton} data-close="" aria-label='Close reveal' type='button'>
+          <button className={styles.closeButton} data-close='' aria-label='Close reveal' type='button'>
             <span aria-hidden='true'>&times;</span>
           </button>
         </div>

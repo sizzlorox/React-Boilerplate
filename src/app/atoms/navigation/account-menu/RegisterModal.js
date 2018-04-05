@@ -51,15 +51,19 @@ class LoginModal extends React.Component {
                   <input type='password' aria-describedby='passwordHelpText' autoComplete='new-password' maxLength='250' required />
                   <p className={styles.helpText} id='passwordHelpText'>Please repeat your password.</p>
                 </div>
+                <div className={`${styles.medium6} ${styles.cell}`}>
+                  <label>Email</label>
+                  <input type='email' autoComplete='e-mail' maxLength='250' required />
+                </div>
                 <div className={`${styles.buttonGroup} ${styles.alignRight} ${styles.cell}`}>
                   <button type='submit' className={styles.button}>
                     Submit
-                    </button>
+                  </button>
                 </div>
               </div>
             </div>
           </form>
-          <button className={styles.closeButton} data-close="" aria-label='Close reveal' type='button'>
+          <button className={styles.closeButton} data-close='' aria-label='Close reveal' type='button'>
             <span aria-hidden='true'>&times;</span>
           </button>
         </div>
