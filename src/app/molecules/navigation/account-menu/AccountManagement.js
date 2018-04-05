@@ -30,18 +30,19 @@ class AccountManagement extends React.Component {
   }
 
   handleLogin(e) {
-    // this.refs.username.value
     e.preventDefault();
+    // TODO Validate username and password by doing a request to API
     if (this.refs.loginModal.refs.username.value === 'test' && this.refs.loginModal.refs.password.value === 'test') {
-      this.setState({ authenticated: true });
       $('#loginModal').foundation('close');
+      // TODO set to login token generated from API
       localStorage.setItem('token', true);
+      this.setState({ authenticated: true });
     }
   }
 
   handleLogout() {
-    this.setState({ authenticated: false });
     localStorage.clear();
+    this.setState({ authenticated: false });
   }
 
   render() {
@@ -69,7 +70,7 @@ class AccountManagement extends React.Component {
           <button className={styles.button} data-toggle='loginModal'>
             Login
           </button>
-          <LoginModal onSubmit={this.handleLogin} id='loginModal' ref='loginModal'/>
+          <LoginModal onSubmit={this.handleLogin} id='loginModal' ref='loginModal' />
           <button className={styles.button} data-toggle='registerModal'>
             Register
           </button>
