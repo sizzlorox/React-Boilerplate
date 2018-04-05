@@ -2,7 +2,6 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 const { Link } = require('react-router-dom');
 const styles = require('../../app.scss');
-// const $ = require('jquery');
 
 // Atoms
 const Loading = require('../loading/Loading');
@@ -21,8 +20,6 @@ class DropDownItem extends React.Component {
   }
 
   componentDidMount() {
-    // $(document).foundation();
-    console.log('Dropdownitem mounted');
     this.setState({ isLoading: false });
   }
 
@@ -30,7 +27,7 @@ class DropDownItem extends React.Component {
     return this.state.isLoading ?
       (<Loading />)
       : (
-        <li role='menuitem'>
+        <li onClick={this.props.onClick} role='menuitem'>
           <Link to={this.props.url}>
             {this.props.children}
           </Link>

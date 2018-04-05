@@ -9,7 +9,6 @@ const Loading = require('../../atoms/loading/Loading');
 // Molecules
 const Navigation = require('../../molecules/navigation/Navigation');
 const AccountManagement = require('../../molecules/navigation/account-menu/AccountManagement');
-const NavigationDropDown = require('../../molecules/navigation/drop-down-menu/NavigationDropDown');
 
 class Header extends React.Component {
   // Should initialize state in constructor instead of getInitialState when using ES6 Classes
@@ -17,8 +16,7 @@ class Header extends React.Component {
     super(props);
     // Locally defined state
     this.state = {
-      isLoading: true,
-      authenticated: false
+      isLoading: true
     };
   }
 
@@ -31,10 +29,6 @@ class Header extends React.Component {
       $('#header').foundation();
     });
     this.setState({ isLoading: false });
-
-    if (localStorage.getItem('token')) {
-      this.setState({ authenticated: true });
-    }
   }
 
   render() {
@@ -50,7 +44,7 @@ class Header extends React.Component {
               <Navigation />
             </ul>
           </div>
-          {this.state.authenticated ? <NavigationDropDown className={styles.topBarRight} /> : <AccountManagement className={styles.topBarRight} />}
+          <AccountManagement className={styles.topBarRight} />
         </div>
       )
   }

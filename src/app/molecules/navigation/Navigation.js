@@ -32,7 +32,7 @@ class Navigation extends React.Component {
           <ul className={styles.menu}>
             <li>
               <NavLink to={{
-                pathname: '/home',
+                pathname: '/',
                 activeClassName: styles.isActive,
                 state: { fromNavigation: true }
               }}>

@@ -13,8 +13,6 @@ class LoginModal extends React.Component {
     this.state = {
       isLoading: true
     };
-
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentWillMount() {
@@ -25,27 +23,23 @@ class LoginModal extends React.Component {
     this.setState({ isLoading: false });
   }
 
-  handleSubmit(formInfo) {
-    const test = JSON.stringify(formInfo);
-    alert(test);
-  }
-
   render() {
+    // button data-close needed ="" or console will throw 'el.data(...).split is not a function'
     return this.state.isLoading ?
       (<Loading />)
       : (
         <div className={styles.reveal} id={this.props.id} data-reveal data-close-on-click='true'>
           <h1>Login</h1>
-          <form onSubmit={this.handleSubmit}>
+          <form onSubmit={this.props.onSubmit}>
             <div className={styles.gridContainer}>
               <div className={`${styles.gridX} ${styles.gridPaddingX}`}>
                 <div className={`${styles.medium6} ${styles.cell}`}>
                   <label>Username</label>
-                  <input type='text' autoComplete='username' maxLength='20' required />
+                  <input type='text' ref='username' autoComplete='username' maxLength='20' required />
                 </div>
                 <div className={`${styles.medium6} ${styles.cell}`}>
                   <label>Password</label>
-                  <input type='password' autoComplete='current-password' maxLength='250' required />
+                  <input type='password' ref='password' autoComplete='current-password' maxLength='250' required />
                 </div>
                 <div className={`${styles.buttonGroup} ${styles.alignRight} ${styles.cell}`}>
                   <button type='submit' className={styles.button}>
