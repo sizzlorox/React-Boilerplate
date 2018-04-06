@@ -108,19 +108,21 @@ class Chatroom extends React.Component {
   }
 
   render() {
-    return this.state.isLoading ?
-      (<Loading />)
-      : localStorage.getItem('token') ? (
-        <div className={styles.gridContainer}>
-          <section className={`${styles.gridX}`}>
-            <MessageList messages={this.state.messages} />
-            <UsersList users={this.state.users} />
-          </section>
-          <section>
-            <MessageForm onMessageSubmit={this.handleMessageSubmit} user={this.state.user} />
-          </section>
-        </div>
-      ) : null
+    return localStorage.getItem('token') ?
+      this.state.isLoading
+        ? (<Loading />)
+        : (
+          <div className={styles.gridContainer}>
+            <section className={`${styles.gridX}`}>
+              <MessageList messages={this.state.messages} />
+              <UsersList users={this.state.users} />
+            </section>
+            <section>
+              <MessageForm onMessageSubmit={this.handleMessageSubmit} user={this.state.user} />
+            </section>
+          </div>
+        )
+      : null
   }
 }
 module.exports = Chatroom;
