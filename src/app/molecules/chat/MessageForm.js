@@ -45,12 +45,10 @@ class MessageForm extends React.Component {
     return this.state.isLoading ?
       (<Loading />)
       : (
-        <div className={`${styles.cell} ${styles.auto}`}>
-          <label>Write New Message</label>
-          <form onSubmit={this.handleSubmit}>
-            <input onChange={this.changeHandler} value={this.state.text} />
-          </form>
-        </div>
+        <form className={`${styles.gridX} ${styles.gridPaddingX}`} onSubmit={this.handleSubmit}>
+          <input className={`${styles.cell} ${styles.auto}`} onChange={this.changeHandler} value={this.state.text} />
+          <button className={`${styles.cell} ${styles.button} ${styles.chatsubmitbtn} ${styles.shrink} ${styles.tiny}`} type='submit'>Send</button>
+        </form>
       )
   }
 }

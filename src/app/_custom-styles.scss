@@ -2,6 +2,23 @@
     margin: 0;
 }
 
+.chatroom {
+    resize: none;
+    height: 200px;
+    margin-bottom: 0;
+}
+
+.userListTable {
+    margin-bottom: 0;
+    max-height: 200px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.button.chatsubmitbtn {
+    margin-bottom: 0;
+}
+
 .footer {
     position: relative;
     height: auto !important;

@@ -27,19 +27,20 @@ class UserList extends React.Component {
     return this.state.isLoading ?
       (<Loading />)
       : (
-        <div className={`${styles.cell} ${styles.small4}`}>
-          <h3>Online Users</h3>
-          <ul>
-            {
-              this.props.users.map((user, i) => {
-                return (
-                  <li key={i}>
-                    {user}
-                  </li>
-                );
-              })
-            }
-          </ul>
+        <div className={`${styles.cell} ${styles.small4} ${styles.userListTable}`}>
+          <table className={styles.table}>
+            <tbody>
+              {
+                this.props.users ? this.props.users.map((user, i) => {
+                  return (
+                    <tr key={i}>
+                      <td>{user}</td>
+                    </tr>
+                  );
+                }) : null
+              }
+            </tbody>
+          </table>
         </div>
       )
   }

@@ -2,8 +2,7 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 const styles = require('../../app.scss');
 const io = require('socket.io-client');
-
-const socket = io.connect('http://localhost:4000');
+let socket;
 
 // Atoms
 const Loading = require('../../atoms/loading/Loading');
@@ -22,8 +21,8 @@ class Chatroom extends React.Component {
       isLoading: true,
       text: '',
       messages: [],
-      users: ['tester', 'you'],
-      user: 'you'
+      users: ['tester'],
+      user: localStorage.getItem('username')
     };
 
     this.handleMessageSubmit = this.handleMessageSubmit.bind(this);
@@ -35,41 +34,53 @@ class Chatroom extends React.Component {
 
   componentDidMount() {
     this.setState({ isLoading: false });
-    socket.on('init', this._initialize);
-    socket.on('send:message', this._messageRecieve);
-    socket.on('user:join', this._userJoined);
-    socket.on('user:left', this._userLeft);
-    socket.on('change:name', this._userChangedName);
-    socket.on('connect_error', (err) => {
-      const { messages } = this.state;
-      messages.push({ user: 'Server', text: err.toString() });
-      this.setState({ messages });
-    });
-    socket.on('connect_timeout', () => {
-      const { messages } = this.state;
-      messages.push({ user: 'Server', text: 'Connection to server has timed out.' });
-      this.setState({ messages });
-    });
-    socket.on('reconnecting', (number) => {
-      const { messages } = this.state;
-      messages.push({ user: 'Server', text: `Reconnting... Attempt number ${number}.` });
-      this.setState({ messages });
-    });
-    socket.on('reconnect', (number) => {
-      const { messages } = this.state;
-      messages.push({ user: 'Server', text: `Reconnected upon ${number} tries.` });
-      this.setState({ messages });
-    });
-    socket.on('reconnect_error', (err) => {
-      const { messages } = this.state;
-      messages.push({ user: 'Server', text: err.toString() });
-      this.setState({ messages });
-    });
-    socket.on('reconnect_error', () => {
-      const { messages } = this.state;
-      messages.push({ user: 'Server', text: 'Reconnection failed...' });
-      this.setState({ messages });
-    });
+    if (localStorage.getItem('token')) {
+      socket = io.connect('http://localhost:4000');
+      // TODO change to socket on connect to populate current user when api is finished
+      const { users } = this.state;
+      users.push(this.state.user);
+      this.setState({ users });
+
+      socket.on('init', this._initialize);
+      socket.on('send:message', this._messageRecieve);
+      // socket.on('connect_error', (err) => {
+      //   const { messages } = this.state;
+      //   messages.push({ user: 'Server', text: err.toString() });
+      //   this.setState({ messages });
+      // });
+      socket.on('connect_timeout', () => {
+        const { messages } = this.state;
+        messages.push({ user: 'Server', text: 'Connection to server has timed out.' });
+        if (messages.length > 30) {
+          messages.splice(0, 1);
+        }
+        this.setState({ messages });
+      });
+      socket.on('reconnecting', (number) => {
+        const { messages } = this.state;
+        messages.push({ user: 'Server', text: `Reconnting... Attempt number ${number}.` });
+        if (messages.length > 30) {
+          messages.splice(0, 1);
+        }
+        this.setState({ messages });
+      });
+      socket.on('reconnect', (number) => {
+        const { messages } = this.state;
+        messages.push({ user: 'Server', text: `Reconnected upon ${number} tries.` });
+        if (messages.length > 30) {
+          messages.splice(0, 1);
+        }
+        this.setState({ messages });
+      });
+      socket.on('reconnect_error', () => {
+        const { messages } = this.state;
+        messages.push({ user: 'Server', text: 'Reconnection failed...' });
+        if (messages.length > 30) {
+          messages.splice(0, 1);
+        }
+        this.setState({ messages });
+      });
+    }
   }
 
   _initialize(data) {
@@ -80,35 +91,18 @@ class Chatroom extends React.Component {
   _messageRecieve(message) {
     const { messages } = this.state;
     messages.push(message);
+    if (messages.length > 30) {
+      messages.splice(0, 1);
+    }
     this.setState({ messages });
-  }
-
-  _userJoined(data) {
-    const { users, messages } = this.state;
-    const { name } = data;
-    users.push(name);
-    messages.push({
-      user: 'APPLICATION BOT',
-      text: name + ' Joined'
-    });
-    this.setState({ users, messages });
-  }
-
-  _userLeft(data) {
-    const { users, messages } = this.state;
-    const { name } = data;
-    const index = users.indexOf(name);
-    users.splice(index, 1);
-    messages.push({
-      user: 'APPLICATION BOT',
-      text: name + ' Left'
-    });
-    this.setState({ users, messages });
   }
 
   handleMessageSubmit(message) {
     const { messages } = this.state;
     messages.push(message);
+    if (messages.length > 30) {
+      messages.splice(0, 1);
+    }
     this.setState({ messages });
     socket.emit('send:message', message);
   }
@@ -117,12 +111,12 @@ class Chatroom extends React.Component {
     return this.state.isLoading ?
       (<Loading />)
       : (
-        <div>
-          <section className={`${styles.gridX} ${styles.gridPaddingX}`}>
+        <div className={styles.gridContainer}>
+          <section className={`${styles.gridX}`}>
             <MessageList messages={this.state.messages} />
             <UsersList users={this.state.users} />
           </section>
-          <section className={`${styles.gridX} ${styles.gridPaddingX}`}>
+          <section>
             <MessageForm onMessageSubmit={this.handleMessageSubmit} user={this.state.user} />
           </section>
         </div>

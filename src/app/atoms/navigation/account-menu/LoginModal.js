@@ -36,7 +36,7 @@ class LoginModal extends React.Component {
       : (
         <div className={styles.reveal} id={this.props.id} data-reveal data-close-on-click='true'>
           <h1>Login</h1>
-          <form>
+          <form onSubmit={this.props.onSubmit}>
             <div className={styles.gridContainer}>
               <div className={`${styles.gridX} ${styles.gridPaddingX}`}>
                 <div className={`${styles.medium6} ${styles.cell}`}>

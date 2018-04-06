@@ -1,10 +1,10 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 const styles = require('../../app.scss');
+const $ = require('jquery');
 
 // Atoms
 const Loading = require('../../atoms/loading/Loading');
-const Message = require('../../atoms/chat/Message');
 
 class MessageList extends React.Component {
   // Should initialize state in constructor instead of getInitialState when using ES6 Classes
@@ -12,8 +12,11 @@ class MessageList extends React.Component {
     super(props);
     // Locally defined state
     this.state = {
-      isLoading: true
+      isLoading: true,
+      messages: this.props.messages
     };
+
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentWillMount() {
@@ -24,23 +27,22 @@ class MessageList extends React.Component {
     this.setState({ isLoading: false });
   }
 
+  handleChange() {
+    this.setState({
+      messages: this.props.messages
+    });
+    $('#chatbox').scrollTop($('#chatbox')[0].scrollHeight);
+  }
+
   render() {
     return this.state.isLoading ?
       (<Loading />)
       : (
         <div className={`${styles.cell} ${styles.auto}`}>
-          <h2>Chatroom:</h2>
-          {
-            this.props.messages.map((message, i) => {
-              return (
-                <Message
-                  key={i}
-                  user={message.user}
-                  text={message.text}
-                />
-              );
-            })
-          }
+          <textarea id='chatbox' className={styles.chatroom} onChange={this.handleChange} value={
+            this.state.messages.map((message, i, arr) => {
+              return i === (arr.length - 1) ? `${message.user}: ${message.text}` : `${message.user}: ${message.text}\n` ;
+            })} />
         </div>
       )
   }

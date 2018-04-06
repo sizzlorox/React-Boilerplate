@@ -21,17 +21,6 @@ class AccountManagement extends React.Component {
 
     this.handleLogin = this.handleLogin.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
-
-    // Using jQuery on loginModalSubmit to not lose reference to e.preventDefault() causing second click on submit button to refresh page
-    $(document).on('click', '#loginSubmit', (e) => {
-      // TODO Validate username and password by doing a request to API
-      if (e.currentTarget.form[0].value === 'test' && e.currentTarget.form[1].value === 'test') {
-        e.preventDefault();
-        // TODO set to login token generated from API
-        localStorage.setItem('token', true);
-        this.handleLogin();
-      }
-    });
   }
 
   componentWillMount() {
@@ -43,18 +32,21 @@ class AccountManagement extends React.Component {
   }
 
   handleLogin(e) {
-    this.setState({ authenticated: localStorage.getItem('token') });
-    $('#header').ready(() => {
-      $('#header').foundation();
-    });
+    const { username, password } = this.refs.loginModal.refs;
+    if (username.value === 'test' && password.value === 'test') {
+      localStorage.setItem('username', username.value);
+      localStorage.setItem('token', true);
+      this.setState({
+        username,
+        authenticated: localStorage.getItem('token')
+      });
+    }
   }
 
   handleLogout() {
     localStorage.clear();
     this.setState({ authenticated: localStorage.getItem('token') });
-    $('#header').ready(() => {
-      $('#header').foundation();
-    });
+    window.location.reload();
   }
 
   // TODO: Create Register handler
