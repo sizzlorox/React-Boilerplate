@@ -14,6 +14,7 @@ const HomePage = require('./pages/home/Home');
 const AboutPage = require('./pages/about/About');
 const FaqPage = require('./pages/faq/Faq');
 const ProfilePage = require('./pages/profile/Profile');
+const ChatroomPage = require('./pages/chat/Chat');
 
 class App extends React.Component {
   // Should initialize state in constructor instead of getInitialState when using ES6 Classes
@@ -44,6 +45,7 @@ class App extends React.Component {
             <Route exact path='/about' component={AboutPage} />
             <Route exact path='/faq' component={FaqPage} />
             <Route exact path='/profile' component={ProfilePage} />
+            <Route exact path='/chatroom' component={ChatroomPage} />
             <Route component={HomePage} />
           </Switch>
           <FooterOrganism />

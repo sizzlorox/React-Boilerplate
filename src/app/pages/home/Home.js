@@ -7,10 +7,6 @@ const $ = require('jquery');
 // Atoms
 const Loading = require('../../atoms/loading/Loading');
 
-// Organisms
-const HeaderOrganism = require('../../organisms/header/Header');
-const FooterOrganism = require('../../organisms/footer/Footer');
-
 class Home extends React.Component {
   // Should initialize state in constructor instead of getInitialState when using ES6 Classes
   constructor(props) {

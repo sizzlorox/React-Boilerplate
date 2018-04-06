@@ -57,6 +57,15 @@ class Navigation extends React.Component {
                 FAQ
               </NavLink>
             </li>
+            <li>
+              <NavLink to={{
+                pathname: '/chatroom',
+                activeClassName: styles.isActive,
+                state: { fromNavigation: true }
+              }}>
+                Chatroom
+              </NavLink>
+            </li>
           </ul>
         </section>
       )
