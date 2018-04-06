@@ -110,7 +110,7 @@ class Chatroom extends React.Component {
   render() {
     return this.state.isLoading ?
       (<Loading />)
-      : (
+      : localStorage.getItem('token') ? (
         <div className={styles.gridContainer}>
           <section className={`${styles.gridX}`}>
             <MessageList messages={this.state.messages} />
@@ -120,7 +120,7 @@ class Chatroom extends React.Component {
             <MessageForm onMessageSubmit={this.handleMessageSubmit} user={this.state.user} />
           </section>
         </div>
-      )
+      ) : null
   }
 }
 module.exports = Chatroom;
