@@ -21,7 +21,7 @@ class Chatroom extends React.Component {
       isLoading: true,
       text: '',
       messages: [],
-      users: ['tester'],
+      users: [],
       user: localStorage.getItem('username')
     };
 
@@ -41,8 +41,8 @@ class Chatroom extends React.Component {
       users.push(this.state.user);
       this.setState({ users });
 
-      socket.on('init', this._initialize);
-      socket.on('send:message', this._messageRecieve);
+      socket.on('init', this.initialize);
+      socket.on('send:message', this.messageReceived);
       // socket.on('connect_error', (err) => {
       //   const { messages } = this.state;
       //   messages.push({ user: 'Server', text: err.toString() });
@@ -83,12 +83,12 @@ class Chatroom extends React.Component {
     }
   }
 
-  _initialize(data) {
+  initialize(data) {
     const { users, name } = data;
     this.setState({ users, user: name });
   }
 
-  _messageRecieve(message) {
+  messageReceived(message) {
     const { messages } = this.state;
     messages.push(message);
     if (messages.length > 30) {
