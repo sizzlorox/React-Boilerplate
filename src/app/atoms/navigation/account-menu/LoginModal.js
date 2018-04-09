@@ -21,7 +21,6 @@ class LoginModal extends React.Component {
   }
 
   componentDidMount() {
-    console.log('LM Mounted')
     this.setState({ isLoading: false });
   }
 
@@ -36,22 +35,20 @@ class LoginModal extends React.Component {
       : (
         <div className={styles.reveal} id={this.props.id} data-reveal data-close-on-click='true'>
           <h1>Login</h1>
-          <form onSubmit={this.props.onSubmit}>
-            <div className={styles.gridContainer}>
-              <div className={`${styles.gridX} ${styles.gridPaddingX}`}>
-                <div className={`${styles.medium6} ${styles.cell}`}>
-                  <label>Username</label>
-                  <input type='text' ref='username' autoComplete='username' maxLength='20' required />
-                </div>
-                <div className={`${styles.medium6} ${styles.cell}`}>
-                  <label>Password</label>
-                  <input type='password' ref='password' autoComplete='current-password' maxLength='250' required />
-                </div>
-                <div className={`${styles.buttonGroup} ${styles.alignRight} ${styles.cell}`}>
-                  <button type='submit' id='loginSubmit' className={styles.button}>
-                    Submit
-                  </button>
-                </div>
+          <form className={styles.gridContainer} onSubmit={this.props.onSubmit}>
+            <div className={`${styles.gridX} ${styles.gridPaddingX}`}>
+              <div className={`${styles.medium6} ${styles.cell}`}>
+                <label>Username</label>
+                <input type='text' ref='username' autoComplete='username' maxLength='20' required />
+              </div>
+              <div className={`${styles.medium6} ${styles.cell}`}>
+                <label>Password</label>
+                <input type='password' ref='password' autoComplete='current-password' maxLength='250' required />
+              </div>
+              <div className={`${styles.buttonGroup} ${styles.alignRight} ${styles.cell}`}>
+                <button type='submit' id='loginSubmit' className={styles.button}>
+                  Submit
+                </button>
               </div>
             </div>
           </form>
