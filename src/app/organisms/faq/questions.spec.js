@@ -16,17 +16,17 @@ describe('Organism <Questions />', function () {
   });
 
   it('Calls componentWillMount', () => {
-    sinon.spy(Questions.prototype, 'componentWillMount');
+    const mockWillMount = sinon.spy(Questions.prototype, 'componentWillMount');
 
-    const wrapper = shallow((<Questions />));
-    expect(Questions.prototype.componentWillMount.calledOnce).to.equal(true);
+    const wrapper = shallow((<Questions messages={this.mockMessages} />));
+    expect(mockWillMount.calledOnce).to.equal(true);
   });
 
   it('Calls componentDidMount', () => {
-    sinon.spy(Questions.prototype, 'componentDidMount');
+    const mockDidMount = sinon.spy(Questions.prototype, 'componentDidMount');
 
-    const wrapper = shallow((<Questions />));
-    expect(Questions.prototype.componentDidMount.calledOnce).to.equal(true);
+    const wrapper = shallow((<Questions messages={this.mockMessages} />));
+    expect(mockDidMount.calledOnce).to.equal(true);
   });
 
   it('Correct types', () => {
@@ -46,10 +46,11 @@ describe('Organism <Questions />', function () {
     // Foundation CSS
     expect(this.wrapper.get(0).props['data-accordion']).exist.to.eql(true);
     expect(this.wrapper.get(0).props['data-multi-expand']).to.eql('true');
+    expect(this.wrapper.get(0).props['data-allow-all-closed']).to.eql('true');
   });
 
   it('Initialized with state isLoading', () => {
-    expect(this.wrapper.state().isLoading).to.eql(false);
+    expect(this.wrapper.state()).to.have.property('isLoading');
   });
 
   it('Allows us to set state', () => {

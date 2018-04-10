@@ -7,9 +7,7 @@ const $ = require('jquery');
 const Loading = require('../../atoms/loading/Loading');
 
 // Organism
-const HeaderOrganism = require('../../organisms/header/Header');
-const SectionOrganism = require('../../organisms/about/Section');
-const FooterOrganism = require('../../organisms/footer/Footer');
+const Section = require('../../organisms/about/Section');
 
 class About extends React.Component {
   // Should initialize state in constructor instead of getInitialState when using ES6 Classes
@@ -37,7 +35,7 @@ class About extends React.Component {
       (<Loading />)
       : (
         <div id='about'>
-          <SectionOrganism />
+          <Section />
         </div>
       )
   }

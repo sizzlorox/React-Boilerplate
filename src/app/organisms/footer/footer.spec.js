@@ -16,17 +16,17 @@ describe('Organism <Footer />', function () {
   });
 
   it('Calls componentWillMount', () => {
-    sinon.spy(Footer.prototype, 'componentWillMount');
+    const mockWillMount = sinon.spy(Footer.prototype, 'componentWillMount');
 
     const wrapper = shallow((<Footer />));
-    expect(Footer.prototype.componentWillMount.calledOnce).to.equal(true);
+    expect(mockWillMount.calledOnce).to.equal(true);
   });
 
   it('Calls componentDidMount', () => {
-    sinon.spy(Footer.prototype, 'componentDidMount');
+    const mockDidMount = sinon.spy(Footer.prototype, 'componentDidMount');
 
     const wrapper = shallow((<Footer />));
-    expect(Footer.prototype.componentDidMount.calledOnce).to.equal(true);
+    expect(mockDidMount.calledOnce).to.equal(true);
   });
 
   it('Correct types', () => {
@@ -36,7 +36,7 @@ describe('Organism <Footer />', function () {
   });
 
   it('Initialized with state isLoading', () => {
-    expect(this.wrapper.state().isLoading).to.eql(false);
+    expect(this.wrapper.state()).to.have.property('isLoading');
   });
 
   it('Allows us to set state', () => {

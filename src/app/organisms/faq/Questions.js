@@ -12,7 +12,6 @@ class Questions extends React.Component {
   // Should initialize state in constructor instead of getInitialState when using ES6 Classes
   constructor(props) {
     super(props);
-    console.log(styles);
     // Locally defined state
     this.state = {
       isLoading: true

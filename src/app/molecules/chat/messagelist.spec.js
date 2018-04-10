@@ -27,14 +27,6 @@ describe('Molecule <MessageList />', function () {
     expect(mockDidMount.calledOnce).to.equal(true);
   });
 
-  it('Correct types', () => {
-    expect(this.wrapper.get(0).type).to.eql('div');
-    expect(this.wrapper.get(0).props.children.type).to.eql('textarea');
-
-    expect(this.wrapper.find('div')).to.have.length(1);
-    expect(this.wrapper.find('textarea')).to.have.length(1);
-  });
-
   it('Change Handler is called', () => {
     const mockChangeHandler = sinon.spy(MessageList.prototype, 'handleChange');
     const wrapper = shallow((<MessageList messages={this.mockMessages}/>));
@@ -45,6 +37,19 @@ describe('Molecule <MessageList />', function () {
     });
     expect(mockChangeHandler.calledOnce).to.eql(true);
     expect(wrapper.state().messages).to.eql(this.mockMessages);
+  });
+
+  it('Correct types', () => {
+    expect(this.wrapper.get(0).type).to.eql('div');
+    expect(this.wrapper.get(0).props.children.type).to.eql('textarea');
+
+    expect(this.wrapper.find('div')).to.have.length(1);
+    expect(this.wrapper.find('textarea')).to.have.length(1);
+  });
+
+  it('Correct props', () => {
+    expect(this.wrapper.find('textarea').get(0).props.id).to.eql('chatbox');
+    expect(this.wrapper.find('textarea').get(0).props.onChange).to.eql(this.wrapper.instance().handleChange);
   });
 
   it('Initialized with state isLoading', () => {

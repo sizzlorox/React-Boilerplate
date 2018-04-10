@@ -8,7 +8,7 @@ let socket;
 const Loading = require('../../atoms/loading/Loading');
 
 // Molecules
-const UsersList = require('../../molecules/chat/UserList');
+const UserList = require('../../molecules/chat/UserList');
 const MessageList = require('../../molecules/chat/MessageList');
 const MessageForm = require('../../molecules/chat/MessageForm');
 
@@ -41,8 +41,8 @@ class Chatroom extends React.Component {
       users.push(this.state.user);
       this.setState({ users });
 
-      socket.on('init', this.initialize);
-      socket.on('send:message', this.messageReceived);
+      socket.on('init', this._initialize);
+      socket.on('send:message', this._messageReceived);
       // socket.on('connect_error', (err) => {
       //   const { messages } = this.state;
       //   messages.push({ user: 'Server', text: err.toString() });
@@ -83,12 +83,12 @@ class Chatroom extends React.Component {
     }
   }
 
-  initialize(data) {
+  _initialize(data) {
     const { users, name } = data;
     this.setState({ users, user: name });
   }
 
-  messageReceived(message) {
+  _messageReceived(message) {
     const { messages } = this.state;
     messages.push(message);
     if (messages.length > 30) {
@@ -115,7 +115,7 @@ class Chatroom extends React.Component {
           <div className={styles.gridContainer}>
             <section className={`${styles.gridX}`}>
               <MessageList messages={this.state.messages} />
-              <UsersList users={this.state.users} />
+              <UserList users={this.state.users} />
             </section>
             <section>
               <MessageForm onMessageSubmit={this.handleMessageSubmit} user={this.state.user} />

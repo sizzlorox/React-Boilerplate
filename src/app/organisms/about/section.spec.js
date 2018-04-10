@@ -3,7 +3,7 @@ const { expect } = require('chai');
 const { shallow, mount, render } = require('enzyme');
 const sinon = require('sinon');
 
-//Molecules
+// Molecules
 const AboutInfo = require('../../molecules/about/AboutInfo');
 
 // Organisms

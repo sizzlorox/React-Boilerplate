@@ -60,6 +60,8 @@ describe('Molecule <MessageForm />', function () {
   });
 
   it('Correct props', () => {
+    expect(this.wrapper.find('form').get(0).props.onSubmit).to.eql(this.wrapper.instance().handleSubmit);
+    expect(this.wrapper.find('input').get(0).props.onChange).to.eql(this.wrapper.instance().changeHandler);
     expect(this.wrapper.find('button').get(0).props.children).to.eql('Send');
   });
 

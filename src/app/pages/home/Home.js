@@ -16,6 +16,7 @@ class Home extends React.Component {
       isLoading: true,
       launches: null
     };
+    this.Request = Request;
   }
 
   componentWillMount() {
@@ -26,7 +27,7 @@ class Home extends React.Component {
     $('#home').ready(() => {
       $('#home').foundation();
     });
-    Request.fetchJSON('https://ipeer.auron.co.uk/launchschedule/api/1/launches/',
+    this.Request.fetchJSON('https://ipeer.auron.co.uk/launchschedule/api/1/launches/',
       {
         method: 'GET'
       })
