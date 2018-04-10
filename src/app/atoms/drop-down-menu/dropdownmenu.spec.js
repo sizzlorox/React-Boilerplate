@@ -3,7 +3,7 @@ const { expect } = require('chai');
 const { shallow, mount, render } = require('enzyme');
 const sinon = require('sinon');
 
-// Components
+// Atoms
 const DropDownMenu = require('./DropDownMenu');
 
 describe('Atom <DropDownMenu />', function () {
@@ -15,17 +15,17 @@ describe('Atom <DropDownMenu />', function () {
   });
 
   it('Calls componentWillMount', () => {
-    sinon.spy(DropDownMenu.prototype, 'componentWillMount');
+    const mockWillMount = sinon.spy(DropDownMenu.prototype, 'componentWillMount');
 
     const wrapper = shallow((<DropDownMenu />));
-    expect(DropDownMenu.prototype.componentWillMount.calledOnce).to.equal(true);
+    expect(mockWillMount.calledOnce).to.equal(true);
   });
 
   it('Calls componentDidMount', () => {
-    sinon.spy(DropDownMenu.prototype, 'componentDidMount');
+    const mockDidMount = sinon.spy(DropDownMenu.prototype, 'componentDidMount');
 
     const wrapper = shallow((<DropDownMenu />));
-    expect(DropDownMenu.prototype.componentDidMount.calledOnce).to.equal(true);
+    expect(mockDidMount.calledOnce).to.equal(true);
   });
 
   it('Correct types', () => {

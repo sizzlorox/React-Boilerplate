@@ -14,7 +14,6 @@ class About extends React.Component {
   constructor(props) {
     super(props);
     // Locally defined state
-    console.log(styles);
     this.state = {
       isLoading: true
     };

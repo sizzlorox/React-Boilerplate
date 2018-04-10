@@ -3,7 +3,7 @@ const { expect } = require('chai');
 const { shallow, mount, render } = require('enzyme');
 const sinon = require('sinon');
 
-// Components
+// Atoms
 const Title = require('./Title');
 
 describe('Accordion Atom <Title />', function () {
@@ -16,17 +16,17 @@ describe('Accordion Atom <Title />', function () {
   });
 
   it('Calls componentWillMount', () => {
-    sinon.spy(Title.prototype, 'componentWillMount');
+    const mockWillMount = sinon.spy(Title.prototype, 'componentWillMount');
 
     const wrapper = shallow((<Title />));
-    expect(Title.prototype.componentWillMount.calledOnce).to.equal(true);
+    expect(mockWillMount.calledOnce).to.equal(true);
   });
 
   it('Calls componentDidMount', () => {
-    sinon.spy(Title.prototype, 'componentDidMount');
+    const mockDidMount = sinon.spy(Title.prototype, 'componentDidMount');
 
     const wrapper = shallow((<Title />));
-    expect(Title.prototype.componentDidMount.calledOnce).to.equal(true);
+    expect(mockDidMount.calledOnce).to.equal(true);
   });
 
   it('Correct types', () => {

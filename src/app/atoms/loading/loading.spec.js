@@ -3,7 +3,7 @@ const { expect } = require('chai');
 const { shallow, mount, render } = require('enzyme');
 const sinon = require('sinon');
 
-// Components
+// Atoms
 const Loading = require('./Loading');
 
 describe('Atom <Loading />', function () {

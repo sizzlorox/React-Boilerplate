@@ -15,23 +15,22 @@ describe('Molecule <Accordion />', function () {
   beforeEach(() => {
     this.mockTitle = 'Unit Test';
     this.mockChildren = 'Unit Test Children';
-    this.mockHandleClick = () => {};
 
     this.wrapper = shallow((<Accordion title={this.mockTitle}>{this.mockChildren}</Accordion>));
   });
 
   it('Calls componentWillMount', () => {
-    sinon.spy(Accordion.prototype, 'componentWillMount');
+    const mockWillMount = sinon.spy(Accordion.prototype, 'componentWillMount');
 
     const wrapper = shallow((<Accordion />));
-    expect(Accordion.prototype.componentWillMount.calledOnce).to.equal(true);
+    expect(mockWillMount.calledOnce).to.equal(true);
   });
 
   it('Calls componentDidMount', () => {
-    sinon.spy(Accordion.prototype, 'componentDidMount');
+    const mockDidMount = sinon.spy(Accordion.prototype, 'componentDidMount');
 
     const wrapper = shallow((<Accordion />));
-    expect(Accordion.prototype.componentDidMount.calledOnce).to.equal(true);
+    expect(mockDidMount.calledOnce).to.equal(true);
   });
 
   it('Correct types', () => {
@@ -46,19 +45,18 @@ describe('Molecule <Accordion />', function () {
   it('Correct props', () => {
     expect(this.wrapper.find('Title').get(0).props.children).to.eql(this.mockTitle);
     expect(this.wrapper.find('Content').get(0).props.children).to.eql(this.mockChildren);
-    expect(this.wrapper.find('Content').get(0).props.active).to.eql(false);
 
     // Foundation CSS
     expect(this.wrapper.get(0).props['data-accordion-item']).to.eql(true);
   });
 
-  it('Initialized with state active', () => {
-    expect(this.wrapper.state().active).to.eql(false);
+  it('Initialized with state isLoading', () => {
+    expect(this.wrapper.state()).to.have.property('isLoading');
   });
 
   it('Allows us to set state', () => {
-    this.wrapper.setState({ active: true });
-    expect(this.wrapper.state().active).to.eql(true);
+    this.wrapper.setState({ isLoading: true });
+    expect(this.wrapper.state().isLoading).to.eql(true);
   });
 
 });

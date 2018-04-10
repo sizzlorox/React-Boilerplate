@@ -31,7 +31,7 @@ class MessageList extends React.Component {
     this.setState({
       messages: this.props.messages
     });
-    $('#chatbox').scrollTop($('#chatbox')[0].scrollHeight);
+    // $('#chatbox').scrollTop($('#chatbox')[0].scrollHeight);
   }
 
   render() {

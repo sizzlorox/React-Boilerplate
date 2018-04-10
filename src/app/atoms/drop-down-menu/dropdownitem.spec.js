@@ -4,7 +4,7 @@ const { shallow, mount, render } = require('enzyme');
 const { Link } = require('react-router-dom');
 const sinon = require('sinon');
 
-// Components
+// Atoms
 const DropDownItem = require('./DropDownItem');
 
 describe('Atom <DropDownItem />', function () {
@@ -18,17 +18,17 @@ describe('Atom <DropDownItem />', function () {
   });
 
   it('Calls componentWillMount', () => {
-    sinon.spy(DropDownItem.prototype, 'componentWillMount');
+    const mockWillMount = sinon.spy(DropDownItem.prototype, 'componentWillMount');
 
-    const wrapper = shallow((<DropDownItem url={this.mockUrl}/>));
-    expect(DropDownItem.prototype.componentWillMount.calledOnce).to.equal(true);
+    const wrapper = shallow((<DropDownItem />));
+    expect(mockWillMount.calledOnce).to.equal(true);
   });
 
   it('Calls componentDidMount', () => {
-    sinon.spy(DropDownItem.prototype, 'componentDidMount');
+    const mockDidMount = sinon.spy(DropDownItem.prototype, 'componentDidMount');
 
-    const wrapper = shallow((<DropDownItem url={this.mockUrl}/>));
-    expect(DropDownItem.prototype.componentDidMount.calledOnce).to.equal(true);
+    const wrapper = shallow((<DropDownItem />));
+    expect(mockDidMount.calledOnce).to.equal(true);
   });
 
   it('Correct types', () => {

@@ -46,7 +46,7 @@ class LoginModal extends React.Component {
                 <input type='password' ref='password' autoComplete='current-password' maxLength='250' required />
               </div>
               <div className={`${styles.buttonGroup} ${styles.alignRight} ${styles.cell}`}>
-                <button type='submit' id='loginSubmit' className={styles.button}>
+                <button type='submit' id='login-submit' className={styles.button}>
                   Submit
                 </button>
               </div>
