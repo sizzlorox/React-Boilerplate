@@ -1,5 +1,0 @@
-TODO LIST:
-
-1. update existing specs to work with updated atomic design
-2. modularize more of molecules, organisms into atoms if possible
-3. make navigation header beautiful
