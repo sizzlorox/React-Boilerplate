@@ -34,7 +34,7 @@ describe('Atom <RegisterModal />', function () {
   xit('Calls componentWillUnmount', () => {
     const mockUnmount = sinon.spy(RegisterModal.prototype, 'componentWillUnmount');
 
-    const wrapper = shallow((<RegisterModal />));
+    const wrapper = shallow((<RegisterModal id={this.mockId}/>));
     expect(mockUnmount.calledOnce).to.equal(false);
     wrapper.unmount();
     expect(mockUnmount.calledOnce).to.equal(true);

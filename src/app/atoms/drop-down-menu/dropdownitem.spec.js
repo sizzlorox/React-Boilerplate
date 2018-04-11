@@ -20,14 +20,14 @@ describe('Atom <DropDownItem />', function () {
   it('Calls componentWillMount', () => {
     const mockWillMount = sinon.spy(DropDownItem.prototype, 'componentWillMount');
 
-    const wrapper = shallow((<DropDownItem />));
+    const wrapper = shallow((<DropDownItem url={this.mockUrl}/>));
     expect(mockWillMount.calledOnce).to.equal(true);
   });
 
   it('Calls componentDidMount', () => {
     const mockDidMount = sinon.spy(DropDownItem.prototype, 'componentDidMount');
 
-    const wrapper = shallow((<DropDownItem />));
+    const wrapper = shallow((<DropDownItem url={this.mockUrl}/>));
     expect(mockDidMount.calledOnce).to.equal(true);
   });
 

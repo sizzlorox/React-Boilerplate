@@ -35,11 +35,12 @@ describe('Molecule <Accordion />', function () {
 
   it('Correct types', () => {
     expect(this.wrapper.get(0).type).to.eql('li');
+    expect(this.wrapper.find('Title').get(0).type).to.eql(Title);
+    expect(this.wrapper.find('Content').get(0).type).to.eql(Content);
+  
     expect(this.wrapper.find('li')).to.have.length(1);
     expect(this.wrapper.find('Title')).to.have.length(1);
     expect(this.wrapper.find('Content')).to.have.length(1);
-    expect(this.wrapper.find('Title').get(0).type).to.eql(Title);
-    expect(this.wrapper.find('Content').get(0).type).to.eql(Content);
   });
 
   it('Correct props', () => {

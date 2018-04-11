@@ -3,10 +3,6 @@ const { expect } = require('chai');
 const { shallow, mount, render } = require('enzyme');
 const sinon = require('sinon');
 
-// Atoms
-const Input = require('../../../atoms/search/Input');
-const Button = require('../../../atoms/search/Button');
-
 // Molecules
 const Bar = require('./Bar');
 
@@ -17,27 +13,35 @@ describe('Molecule <Bar />', function () {
   });
 
   it('Calls componentWillMount', () => {
-    sinon.spy(Bar.prototype, 'componentWillMount');
+    const mockWillMount = sinon.spy(Bar.prototype, 'componentWillMount');
 
-    const wrapper = shallow((<Bar />));
-    expect(Bar.prototype.componentWillMount.calledOnce).to.equal(true);
+    const wrapper = shallow((<Bar url={this.mockUrl}/>));
+    expect(mockWillMount.calledOnce).to.equal(true);
   });
 
   it('Calls componentDidMount', () => {
-    sinon.spy(Bar.prototype, 'componentDidMount');
+    const mockDidMount = sinon.spy(Bar.prototype, 'componentDidMount');
 
-    const wrapper = shallow((<Bar />));
-    expect(Bar.prototype.componentDidMount.calledOnce).to.equal(true);
+    const wrapper = shallow((<Bar url={this.mockUrl}/>));
+    expect(mockDidMount.calledOnce).to.equal(true);
   });
 
   it('Correct types', () => {
     expect(this.wrapper.get(0).type).to.eql('ul');
-    expect(this.wrapper.get(0).props.children[0].type).to.eql(Input);
-    expect(this.wrapper.get(0).props.children[1].type).to.eql(Button);
+    expect(this.wrapper.get(0).props.children[0].type).to.eql('li');
+    expect(this.wrapper.get(0).props.children[1].type).to.eql('li');
+    expect(this.wrapper.get(0).props.children[0].props.children.type).to.eql('input');
+    expect(this.wrapper.get(0).props.children[1].props.children.type).to.eql('button');
+  });
+
+  it('Correct props', () => {
+    expect(this.wrapper.find('input').get(0).props.type).to.eql('search');
+    expect(this.wrapper.find('button').get(0).props.type).to.eql('button');
+    expect(this.wrapper.find('button').get(0).props.children).to.eql('Search');
   });
 
   it('Initialized with state isLoading', () => {
-    expect(this.wrapper.state().isLoading).to.eql(false);
+    expect(this.wrapper.state()).to.have.property('isLoading');
   });
 
   it('Allows us to set state', () => {
